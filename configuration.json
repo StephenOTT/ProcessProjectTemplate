@@ -1,0 +1,23 @@
+{
+  "myProcess": {
+    "config1": "value123"
+  },
+
+  "myCMMN": {
+    "configABC": "valueABC"
+  },
+
+  "myDMN":{
+    "configKey": "value444"
+  },
+
+  "myProcess2":{
+    "anotherConfig": "values111"
+  },
+
+  "GenericConfiguration":{
+    "server":"http://...",
+    "username": "123123",
+    "vaultKey": "9fweuf-9ewuf-ew9fu-wef9w-fwef"
+  }
+}
