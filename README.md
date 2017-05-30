@@ -12,22 +12,23 @@
 
 This file does something and its purpose is to do abc.
 
-![File 1 BPMN File](/docs/images/process_image_example.png)
-
-
-*Image Files should be stored in the `/docs` folder*
+![File 1 BPMN File](/docs/images/BPMN_image_example.png)
 
 ## File 2.dmn
 
 This file does something and its purpose is to do abc.
 
-Image of DMN
+1. DDR
+1. DMN
+
+![File 2 DDR File](/docs/images/DDR_image_example.png)
+![File 2 DMN File](/docs/images/DMN_image_example.png)
 
 ## File 3.cmmn
 
 This file does something and its purpose is to do abc.
 
-Image of CMMN
+![File 3 CMMN File](/docs/images/CMMN.png)
 
 ## File 4.js
 
