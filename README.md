@@ -44,6 +44,9 @@ Image example of the Rendered Freemarker file (if applicable)
 
 *Link to the Postman file that has pre-configured deployment instructions.*
 
+1. Postman Collection
+1. Postman Camunda Environment
+
 # Change Log
 
 [Change Log](CHANGELOG.md)
