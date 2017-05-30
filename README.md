@@ -38,8 +38,6 @@ This file does something and its purpose is to do abc.
 
 Image example of the Rendered Freemarker file (if applicable)
 
-## ... etc
-
 # How to Deploy
 
 *Link to the Postman file that has pre-configured deployment instructions.*
