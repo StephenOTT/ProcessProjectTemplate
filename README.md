@@ -28,7 +28,7 @@ This file does something and its purpose is to do abc.
 
 This file does something and its purpose is to do abc.
 
-![File 3 CMMN File](/docs/images/CMMN.png)
+![File 3 CMMN File](/docs/images/CMMN_image_example.png)
 
 ## File 4.js
 
