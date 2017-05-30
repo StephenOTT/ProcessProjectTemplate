@@ -21,12 +21,12 @@
 				}
 			],
 			"request": {
-				"url": "",
+				"url": "{{baseURL_API}}/deployment/create",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
+						"value": "application/x-www-form-urlencoded",
 						"description": ""
 					},
 					{
@@ -36,8 +36,57 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": ""
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "deployment-name",
+							"value": "My Deployment Name",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "enable-duplicate-filtering",
+							"value": "false",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "deploy-changed-only",
+							"value": "false",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "deployment-source",
+							"value": "local",
+							"type": "text",
+							"enabled": false
+						},
+						{
+							"key": "tenant-id",
+							"value": "MyTenant",
+							"type": "text",
+							"enabled": false
+						},
+						{
+							"key": "myfile.bpmn - RenameMe",
+							"value": "",
+							"type": "file",
+							"enabled": true
+						},
+						{
+							"key": "myfile2.bpmn - RenameMe",
+							"value": "",
+							"type": "file",
+							"enabled": true
+						},
+						{
+							"key": "myScript.js - RenameMe",
+							"value": "",
+							"type": "file",
+							"enabled": true
+						}
+					]
 				},
 				"description": ""
 			},
