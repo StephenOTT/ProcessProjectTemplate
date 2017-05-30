@@ -12,7 +12,8 @@
 
 This file does something and its purpose is to do abc.
 
-Image of BPMN
+![File 1 BPMN File](/docs/images/process_image_example.png)
+
 
 *Image Files should be stored in the `/docs` folder*
 
