@@ -1,0 +1,21 @@
+{
+  "deployment":{
+    "deployment-name": "My Deployment",
+    "enable-duplicate-filtering": false,
+    "deploy-changed-only": false,
+    "deployment-source": "Automated Deployment",
+    "tenant-id": "My Tenant",
+    "files": {
+      "config.json": "/resources/config.json",
+      "File_1.bpmn": "/bpmn/File_1.bpmn",
+      "File_2.dmn": "/dmn/File_1.bpmn",
+      "File_3.cmmn": "/cmmn/File_1.bpmn",
+      "File_4.js": "/resources/scripts/File_1.js"
+    }
+  },
+  "migration":{
+    "perform_migration": false,
+    "plan":{}
+  },
+
+}
