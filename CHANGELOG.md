@@ -17,8 +17,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Something that was fixed.
 
+### Security
+- A security note or warning
 
-## [0.1.0] - 2017-05-31
+
+## [0.3.0] - 2017-05-31
 ### Added
 - Something that was added.
 
@@ -31,7 +34,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Something that was fixed.
 
-## [0.3.0] - 2015-12-03
+### Security
+- A security note or warning.
+
+## [0.2.0] - 2015-12-03
 ### Added
 - Something that was added.
 
@@ -44,7 +50,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - Something that was fixed.
 
-## [0.3.0] - 2015-10-06
+### Security
+- A security note or warning.
+
+## [0.1.0] - 2015-10-06
 ### Added
 - Something that was added.
 
@@ -56,6 +65,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Something that was fixed.
+
+### Security
+- A security note or warning.
 
 [Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.3.0...HEAD
 [0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0
