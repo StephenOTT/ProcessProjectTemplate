@@ -1,5 +1,5 @@
 {
-  "deployment":{
+  "deployment": {
     "deployment-name": "My Deployment",
     "enable-duplicate-filtering": false,
     "deploy-changed-only": false,
@@ -13,9 +13,8 @@
       "File_4.js": "resources/scripts/File_4.js"
     }
   },
-  "migration":{
+  "migration": {
     "perform_migration": false,
-    "plan":{}
-  },
-
+    "plan": {}
+  }
 }
