@@ -48,7 +48,7 @@ Image example of the Rendered Freemarker file (if applicable)
 
 ## Automated Deployment
 
-1. [Git Repo Releases](releases/latest)
+1. [Repo Releases](https://github.com/StephenOTT/ProcessProjectTemplate/releases)
 1. [deploy.json](deploy.json)
 
 # Change Log
