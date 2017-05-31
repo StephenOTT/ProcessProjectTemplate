@@ -1,7 +1,7 @@
 {
 	"variables": [],
 	"info": {
-		"name": "Process Project - Rename Me",
+		"name": "ProcessProjectRenameMe",
 		"_postman_id": "0e3a9b68-c737-3426-dd90-40d190ed8049",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
@@ -41,50 +41,44 @@
 						{
 							"key": "deployment-name",
 							"value": "My Deployment Name",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "enable-duplicate-filtering",
 							"value": "false",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "deploy-changed-only",
 							"value": "false",
-							"type": "text",
-							"enabled": true
+							"type": "text"
 						},
 						{
 							"key": "deployment-source",
 							"value": "local",
 							"type": "text",
-							"enabled": false
+							"disabled": true
 						},
 						{
 							"key": "tenant-id",
 							"value": "MyTenant",
 							"type": "text",
-							"enabled": false
+							"disabled": true
 						},
 						{
 							"key": "myfile.bpmn - RenameMe",
 							"value": "",
-							"type": "file",
-							"enabled": true
+							"type": "file"
 						},
 						{
 							"key": "myfile2.bpmn - RenameMe",
 							"value": "",
-							"type": "file",
-							"enabled": true
+							"type": "file"
 						},
 						{
 							"key": "myScript.js - RenameMe",
 							"value": "",
-							"type": "file",
-							"enabled": true
+							"type": "file"
 						}
 					]
 				},
@@ -106,7 +100,43 @@
 				}
 			],
 			"request": {
-				"url": "",
+				"url": "{{baseURL_API}}/process-definition/key/_KEY_GOES_HERE_/start ",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Start BPMN Instance (with Tenant)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{baseURL_API}}/process-definition/key/_KEY_GOES_HERE/tenant-id/_TENANT_ID_GOES_HERE_/start\n ",
 				"method": "POST",
 				"header": [
 					{
