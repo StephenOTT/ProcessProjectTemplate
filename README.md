@@ -12,7 +12,7 @@
 
 This file does something and its purpose is to do abc.
 
-![File 1 BPMN File](/docs/images/BPMN_image_example.png)
+![File 1 BPMN File](docs/images/BPMN_image_example.png)
 
 ## File_2.dmn
 
@@ -21,14 +21,14 @@ This file does something and its purpose is to do abc.
 1. DDR
 1. DMN
 
-![File 2 DDR File](/docs/images/DDR_image_example.png)
-![File 2 DMN File](/docs/images/DMN_image_example.png)
+![File 2 DDR File](docs/images/DDR_image_example.png)
+![File 2 DMN File](docs/images/DMN_image_example.png)
 
 ## File_3.cmmn
 
 This file does something and its purpose is to do abc.
 
-![File 3 CMMN File](/docs/images/CMMN_image_example.png)
+![File 3 CMMN File](docs/images/CMMN_image_example.png)
 
 ## File_4.js
 
@@ -42,16 +42,14 @@ Image example of the Rendered Freemarker file (if applicable)
 
 # How to Deploy
 
-*Link to the Postman file that has pre-configured deployment instructions.*
-
 ## Manual Deployment
-1. Postman Collection
-1. Postman Camunda Environment
+1. [Postman Collection](docs/ProcessProjectRenameMe.postman_collection)
+1. [Postman Environment Variables](docs/CamundaServer.postman_environment)
 
 ## Automated Deployment
 
-1. Git Repo Release
-1. deploy.json file
+1. [Git Repo Releases](releases/latest)
+1. [deploy.json](deploy.json)
 
 # Change Log
 
