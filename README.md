@@ -8,13 +8,13 @@
 
 *Explain what is the purpose of each process file in the project.*
 
-## File 1.bpmn
+## File_1.bpmn
 
 This file does something and its purpose is to do abc.
 
 ![File 1 BPMN File](/docs/images/BPMN_image_example.png)
 
-## File 2.dmn
+## File_2.dmn
 
 This file does something and its purpose is to do abc.
 
@@ -24,17 +24,17 @@ This file does something and its purpose is to do abc.
 ![File 2 DDR File](/docs/images/DDR_image_example.png)
 ![File 2 DMN File](/docs/images/DMN_image_example.png)
 
-## File 3.cmmn
+## File_3.cmmn
 
 This file does something and its purpose is to do abc.
 
 ![File 3 CMMN File](/docs/images/CMMN_image_example.png)
 
-## File 4.js
+## File_4.js
 
 This file does something and its purpose is to do abc.
 
-## File 5.ftl
+## File_5.ftl
 
 This file does something and its purpose is to do abc.
 
@@ -44,8 +44,14 @@ Image example of the Rendered Freemarker file (if applicable)
 
 *Link to the Postman file that has pre-configured deployment instructions.*
 
+## Manual Deployment
 1. Postman Collection
 1. Postman Camunda Environment
+
+## Automated Deployment
+
+1. Git Repo Release
+1. deploy.json file
 
 # Change Log
 
