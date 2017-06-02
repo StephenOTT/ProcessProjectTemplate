@@ -130,10 +130,10 @@ var renderedTemplate = function() {
 
   with (ScriptEngine) {
     var manager = new ScriptEngineManager();
-    var engine = manager.getEngineByName("freemarker");
+    var engine = manager.getEngineByName('freemarker');
 
     var bindings = engine.createBindings();
-    bindings.put("placeholders", placeholderValues);
+    bindings.put('placeholders', placeholderValues);
 
     var rendered = engine.eval(content, bindings);
 
@@ -160,10 +160,10 @@ function renderFreeMarkerTemplate(content, placeholderValues)
 
   with (ScriptEngine) {
     var manager = new ScriptEngineManager();
-    var engine = manager.getEngineByName("freemarker");
+    var engine = manager.getEngineByName('freemarker');
 
     var bindings = engine.createBindings();
-    bindings.put("placeholders", placeholderValues);
+    bindings.put('placeholders', placeholderValues);
 
     var rendered = engine.eval(content, bindings);
 
