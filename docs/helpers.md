@@ -4,7 +4,7 @@ The following a collection of code-snippets and scripts that are commonly used.
 
 All examples are Javascript based.
 
-## Load Config.js as a Process Variable
+## Load Config.js into memory and into a Process Variable(optional)
 
 ```javascript
 /**
@@ -106,7 +106,7 @@ function getResourceAsString(fileName)
 var resource = getResourceAsString('emailTemplate.ftl');
 ```
 
-## Render FreeMarker template in memory
+## Render FreeMarker template into memory
 
 ### Javascript
 
