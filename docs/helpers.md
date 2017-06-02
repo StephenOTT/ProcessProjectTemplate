@@ -169,8 +169,8 @@ function renderFreeMarkerTemplate(content, placeholderValues)
 }
 
 var placeholderValues = {
-   "firstName": "My First Name",
-   "lastName": "My Last Name"
+   "firstName": "John",
+   "lastName": "Smith"
 }
 
 var renderedTemplate = renderFreeMarkerTemplate(content, placeholderValues);
