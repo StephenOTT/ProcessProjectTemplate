@@ -99,7 +99,7 @@ function getResourceAsString(fileName)
   return resourceAsString;
 }
 
-getResourceAsString('emailTemplate.ftl');
+var resource = getResourceAsString('emailTemplate.ftl');
 ```
 
 ## Render FreeMarker template in memory
@@ -147,7 +147,7 @@ Version 2, As a function:
 function renderFreeMarkerTemplate(content, placeholderValues)
 {
   'use strict';
-  
+
   var ScriptEngine = new JavaImporter(javax.script);
 
   with (ScriptEngine) {
@@ -168,7 +168,7 @@ var placeholderValues = {
    "lastName": "My Last Name"
 }
 
-renderFreeMarkerTemplate(content, placeholderValues);
+var renderedTemplate = renderFreeMarkerTemplate(content, placeholderValues);
 
 ```
 where `content` is the string content of a FreeMarker template file.
