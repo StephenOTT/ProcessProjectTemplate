@@ -143,7 +143,7 @@ var placeholderValues = {
 }
 
 var renderedTemplate = renderFreeMarkerTemplate(content, placeholderValues);
-
+// renderedTemplate.toString();
 ```
 where `content` is the string content of a FreeMarker template file.
 
