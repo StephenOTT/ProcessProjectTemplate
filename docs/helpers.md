@@ -110,37 +110,6 @@ var resource = getResourceAsString('emailTemplate.ftl');
 
 ### Javascript
 
-Version 1, as a variable:
-
-```javascript
-
-var renderedTemplate = function()
-{
-  'use strict';
-
-  var placeholderValues = {
-    "firstName": "John",
-    "lastName": "Smith"
-  }
-
-  var ScriptEngine = new JavaImporter(javax.script);
-
-  with (ScriptEngine) {
-    var manager = new ScriptEngineManager();
-    var engine = manager.getEngineByName('freemarker');
-
-    var bindings = engine.createBindings();
-    bindings.put('placeholders', placeholderValues);
-
-    var rendered = engine.eval(content, bindings);
-
-    return rendered;
-  }
-}
-```
-
-Version 2, As a function:
-
 ```javascript
 /**
  * Evaluate/Render a FreeMarker template
