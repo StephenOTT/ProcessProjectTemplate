@@ -6,9 +6,7 @@ All examples are Javascript based.
 
 ## Load Config.js as a Process Variable
 
-
 ```javascript
-'use strict';
 /**
  * Load configuration file as a SPIN JSON variable in-memory and optionally as a process variable.
  *
@@ -19,6 +17,8 @@ All examples are Javascript based.
  */
 function loadConfig(fileName, key, persist)
 {
+  'use strict';
+
   if (typeof(persist) == 'undefined') {
     persist = false;
   }
@@ -56,4 +56,128 @@ loadConfig('config.json', 'myProcess', true);
 // loadConfig('config.json', 'myprocess');
 // loadConfig('config.json', 'myprocess', true);
 // loadConfig('config.json', 'myprocess', false);
+```
+
+
+## Throw a Message within a Process
+
+As of Camunda 7.7, in order to throw a message from one process to another using the internal Java API, you must use a expression. You could
+
+```
+${execution.getProcessEngineServices().getRuntimeService().createMessageCorrelation("work").correlateWithResult()}
+```
+[Camunda Runtime Service (Java API)](https://docs.camunda.org/javadoc/camunda-bpm-platform/7.7/org/camunda/bpm/engine/RuntimeService.html)
+
+## Load Deployment Resource into memory
+
+```javascript
+/**
+ * Load deployment resource as a String in-memory.
+ *
+ * @param string fileName The name of the deployment resource file.
+ * @return string The deployment resource as a String.
+ */
+function getResourceAsString(fileName)
+{
+  'use strict';
+
+  if (typeof(persist) == 'undefined') {
+    persist = false;
+  }
+
+  var processDefinitionId = execution.getProcessDefinitionId();
+  var deploymentId = execution.getProcessEngineServices().getRepositoryService().getProcessDefinition(processDefinitionId).getDeploymentId();
+  var resource = execution.getProcessEngineServices().getRepositoryService().getResourceAsStream(deploymentId, fileName);
+
+  var Scanner = Java.type('java.util.Scanner');
+
+  var scannerResource = new Scanner(resource, 'UTF-8');
+
+  var resourceAsString = scannerResource.useDelimiter('\\Z').next();
+  scannerResource.close();
+
+  return resourceAsString;
+}
+
+getResourceAsString('emailTemplate.ftl');
+```
+
+## Render FreeMarker template in memory
+
+### Javascript
+
+Version 1, as a variable:
+
+```javascript
+
+var renderedTemplate = function() {
+  'use strict';
+
+  var placeholderValues = {
+    "firstName": "John",
+    "lastName": "Smith"
+  }
+
+  var ScriptEngine = new JavaImporter(javax.script);
+
+  with (ScriptEngine) {
+    var manager = new ScriptEngineManager();
+    var engine = manager.getEngineByName("freemarker");
+
+    var bindings = engine.createBindings();
+    bindings.put("placeholders", placeholderValues);
+
+    var rendered = engine.eval(content, bindings);
+
+    return rendered;
+  }
+}
+```
+
+Version 2, As a function:
+
+```javascript
+/**
+ * Evaluate/Render a FreeMarker template
+ *
+ * @param string content The string content of a FreeMarker template.
+ * @param string object The KeyValue object/JSON object for placeholder bindings.
+ * @return string The rendered FreeMarker template.
+ */
+function renderFreeMarkerTemplate(content, placeholderValues)
+{
+  'use strict';
+  
+  var ScriptEngine = new JavaImporter(javax.script);
+
+  with (ScriptEngine) {
+    var manager = new ScriptEngineManager();
+    var engine = manager.getEngineByName("freemarker");
+
+    var bindings = engine.createBindings();
+    bindings.put("placeholders", placeholderValues);
+
+    var rendered = engine.eval(content, bindings);
+
+    return rendered;
+  }
+}
+
+var placeholderValues = {
+   "firstName": "My First Name",
+   "lastName": "My Last Name"
+}
+
+renderFreeMarkerTemplate(content, placeholderValues);
+
+```
+where `content` is the string content of a FreeMarker template file.
+
+
+### FreeMarker Template
+
+```FreeMarker
+This is a sample FreeMarker template file.
+My First Name: ${placeholders.firstName}
+My Last Name: ${placeholders.lastName}
 ```
