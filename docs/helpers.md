@@ -118,7 +118,8 @@ Version 1, as a variable:
 
 ```javascript
 
-var renderedTemplate = function() {
+var renderedTemplate = function()
+{
   'use strict';
 
   var placeholderValues = {
