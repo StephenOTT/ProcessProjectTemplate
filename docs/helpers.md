@@ -23,6 +23,10 @@ function loadConfig(fileName, key, persist)
     persist = false;
   }
 
+  if (typeof(key) == 'undefined') {
+    key = null;
+  }
+
   var processDefinitionId = execution.getProcessDefinitionId();
   var deploymentId = execution.getProcessEngineServices().getRepositoryService().getProcessDefinition(processDefinitionId).getDeploymentId();
   var resource = execution.getProcessEngineServices().getRepositoryService().getResourceAsStream(deploymentId, fileName);
@@ -39,6 +43,9 @@ function loadConfig(fileName, key, persist)
   if (key === null) {
     var config = configAsJson;
   } else {
+    if (!configAsJson.hasProp(key)) {
+      throw 'Key "' + key + '" does not exist.';
+    }
     var config = configAsJson.prop(key);
   }
 
@@ -59,14 +66,15 @@ loadConfig('config.json', 'myProcess', true);
 ```
 
 
-## Throw a Message within a Process
+## Trigger/Throw a Message within a Process
 
-As of Camunda 7.7, in order to throw a message from one process to another using the internal Java API, you must use a expression. You could
+As of Camunda 7.7, in order to throw a message from one process to another using the internal Java API, you must use an expression.
+The following is an example of using a expression to trigger a message:
 
 ```
 ${execution.getProcessEngineServices().getRuntimeService().createMessageCorrelation("work").correlateWithResult()}
 ```
-[Camunda Runtime Service (Java API)](https://docs.camunda.org/javadoc/camunda-bpm-platform/7.7/org/camunda/bpm/engine/RuntimeService.html)
+See the [Camunda Runtime Service (Java API) Docs](https://docs.camunda.org/javadoc/camunda-bpm-platform/7.7/org/camunda/bpm/engine/RuntimeService.html) for more options.
 
 ## Load Deployment Resource into memory
 
