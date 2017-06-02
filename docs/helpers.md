@@ -120,7 +120,7 @@ var resource = getResourceAsString('emailTemplate.ftl');
  */
 function renderFreeMarkerTemplate(content, placeholderValues)
 {
-  'use strict';
+  // 'use strict' cannot be used at a global script level because JavaImporter's with(){} does not support it.
 
   var ScriptEngine = new JavaImporter(javax.script);
 
