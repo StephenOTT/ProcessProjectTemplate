@@ -89,10 +89,6 @@ function getResourceAsString(fileName)
 {
   'use strict';
 
-  if (typeof(persist) == 'undefined') {
-    persist = false;
-  }
-
   var processDefinitionId = execution.getProcessDefinitionId();
   var deploymentId = execution.getProcessEngineServices().getRepositoryService().getProcessDefinition(processDefinitionId).getDeploymentId();
   var resource = execution.getProcessEngineServices().getRepositoryService().getResourceAsStream(deploymentId, fileName);
