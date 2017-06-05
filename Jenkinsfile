@@ -62,6 +62,7 @@ pipeline {
 
         script {
           def props = readJSON file: 'deploy.json'
+          echo "DEPLOY.json Contains:"
           echo props.toString()
         }
         
