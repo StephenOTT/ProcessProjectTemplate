@@ -56,7 +56,7 @@ fi
           
           echo "Files to be deployed"
           def files = deployConfig['deployment']['files']
-          echo files
+          echo files.toString()
           files.each {
             k, v -> echo "${k.toString()}  :  ${v.toString()}"
           }
