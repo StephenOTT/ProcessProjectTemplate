@@ -7,20 +7,15 @@ pipeline {
           def exists = fileExists 'deploy.json'
           
           if (exists) {
-              echo 'deploy.json found'
+            Â  echo 'deploy.json found'
           } else {
-              error("deploy.json cannot be found")
+            Â  error("deploy.json cannot be found")
           }
         }
         
-        script {
-          import groovy.json.JsonSlurper
-          
+        script {          
           def deployConfig = readFile("deploy.json")
-          
-          def configJson = new JsonSlurper().parse(deployConfig)
-          
-          echo configJson
+        
         }
         
       }
