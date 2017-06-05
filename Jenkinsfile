@@ -14,8 +14,7 @@ pipeline {
         }
         
         script {          
-          def deployConfig = readFile("deploy.json")
-        
+          def deployConfig = readFile 'deploy.json'
         }
         
       }
