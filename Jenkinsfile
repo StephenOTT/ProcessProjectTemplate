@@ -28,7 +28,7 @@ pipeline {
         }
 
         script {
-          sendMultiPartFile(readFile: 'bpmn/pay_taxes.bpmn')
+          sendMultiPartFile(readFile('bpmn/pay_taxes.bpmn'))
           // echo sendData.toString()
 
 
@@ -40,7 +40,7 @@ pipeline {
 }
 
 
-void sendMultiPartFile(multipartImageFile) {
+void sendMultiPartFile(String multipartImageFile) {
   def http = new HTTPBuilder("http://www.localhost:8081/engine-rest/deployment/create")
 
   http.request(Method.POST) { req ->
