@@ -18,13 +18,7 @@ pipeline {
           echo props.toString()
         }
         
-        sh '''response=$(curl -w "\n"\
--H "Accept: application/json" \
--F "deployment-name=JenkinsDeployment" \
--F "enable-duplicate-filtering=false" \
--F "deploy-changed-only=false" \
--F "myBPMN.bpmn=@/bpmn/pay_taxes.bpmn" \
-http://localhost:8081/engine-rest/deployment/create)
+        sh '''response=$(curl -w -H "Accept: application/json" -F "deployment-name=JenkinsDeployment" -F "enable-duplicate-filtering=false" -F "deploy-changed-only=false" -F "myBPMN.bpmn=@/bpmn/pay_taxes.bpmn" http://localhost:8081/engine-rest/deployment/create)
 
 if [ "$response" != "200" ]
 then
