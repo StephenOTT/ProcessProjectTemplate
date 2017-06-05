@@ -1,10 +1,9 @@
 {
   "deployment": {
-    "deployment-name": "MyDeployment",
+    "deployment-name": "Process Project Template ABC123",
     "enable-duplicate-filtering": false,
     "deploy-changed-only": false,
-    "deployment-source": "AutomatedDeployment",
-    "tenant-id": "My Tenant",
+    "deployment-source": "Jenkins Automated Deployment",
     "files": {
       "config.json": "resources/config.json",
       "pay_taxes.bpmn": "bpmn/pay_taxes.bpmn"
