@@ -17,7 +17,7 @@ pipeline {
           def deployConfig = readJSON file: 'deploy.json'
           def files = deployConfig['deployment']['files']
           for ( e in files ) {
-              if (fileExists(${e.value})) {
+              if (fileExists(e.value)) {
                 echo "${e.key}:${e.value} FOUND"
               } else {
                 error("${e.key}:${e.value} CANNOT BE FOUND")
