@@ -63,8 +63,8 @@ pipeline {
           
           def output = fields.join(" -F ")
           
-          def curlOutput = "curl --url http://172.17.0.1:8081/engine-rest/deployment/create -H Accept:application/json -F ${output} -w \"%{http_code}\""
-          echo "Final CURL:"
+          def curlOutput = "curl --url ${CAMUNDA_API_URL}/engine-rest/deployment/create -H Accept:application/json -F ${output} -w \"%{http_code}\""
+          echo "Final CURL String:"
           echo curlOutput
           echo "-------------------------------------------------------"
           echo "Saving CURL String into Env Variable CAMUNDA_CURL:"
