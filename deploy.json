@@ -1,9 +1,9 @@
 {
   "deployment": {
-    "deployment-name": "My Deployment",
+    "deployment-name": "MyDeployment",
     "enable-duplicate-filtering": false,
     "deploy-changed-only": false,
-    "deployment-source": "Automated Deployment",
+    "deployment-source": "AutomatedDeployment",
     "tenant-id": "My Tenant",
     "files": {
       "config.json": "resources/config.json",
