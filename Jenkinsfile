@@ -58,7 +58,7 @@ pipeline {
           def files = deployConfig['deployment']['files']
           echo files.toString()
           files.each {
-            k, v -> fields << "\"${k}=/@${v}\""
+            k, v -> fields << "\"${k}=@/${v}\""
           }
           
           def output = fields.join(" -F ")
