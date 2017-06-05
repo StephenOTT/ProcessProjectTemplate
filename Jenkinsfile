@@ -4,13 +4,23 @@ pipeline {
     stage('getConflig') {
       steps {
         script {
-          def exists = fileExists 'deploy1.json'
+          def exists = fileExists 'deploy.json'
           
           if (exists) {
-            echo 'File = Yes'
+              echo 'deploy.json found'
           } else {
-            echo 'File = No'
+              error("deploy.json cannot be found")
           }
+        }
+        
+        script {
+          import groovy.json.JsonSlurper
+          
+          def deployConfig = readFile("deploy.json")
+          
+          def configJson = new JsonSlurper().parse(deployConfig)
+          
+          echo configJson
         }
         
       }
