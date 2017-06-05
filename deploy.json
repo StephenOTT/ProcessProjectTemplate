@@ -6,7 +6,7 @@
     "deployment-source": "AutomatedDeployment",
     "tenant-id": "My Tenant",
     "files": {
-      "config.json": "resources/config.json",
+      "config1.json": "resources/config1.json",
       "pay_taxes.bpmn": "bpmn/pay_taxes.bpmn"
     }
   },
