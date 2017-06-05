@@ -16,7 +16,7 @@ pipeline {
          script {
           def files = deployConfig['deployment']['files']
           for ( e in files ) {
-              if (fileExists ${v}) {
+              if (fileExists ${e.value}) {
                 echo "${e.key}:${e.value} FOUND"
               } else {
                 error("${e.key}:${e.value} CANNOT BE FOUND")
