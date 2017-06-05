@@ -15,13 +15,11 @@ pipeline {
         
          script {
           def files = deployConfig['deployment']['files']
-          files.each {
-            k, v -> 
-              def exists fileExists ${v}
-              if (exists) {
-                echo "${k}:${v} FOUND"
+          for ( e in files ) {
+              if (fileExists ${v}) {
+                echo "${e.key}:${e.value} FOUND"
               } else {
-                error("${k}:${v} CANNOT BE FOUND")
+                error("${e.key}:${e.value} CANNOT BE FOUND")
               }
           }
         }
