@@ -5,18 +5,20 @@ pipeline {
       steps {
         script {
           def exists = fileExists 'deploy.json'
-
+          
           if (exists) {
             echo 'deploy.json found'
           } else {
             error("deploy.json cannot be found")
           }
         }
-
+        
         script {
           def props = readJSON file: 'deploy.json'
           echo props.toString()
         }
+        
+        load 'camundaDeploy.groovy'
       }
     }
   }
