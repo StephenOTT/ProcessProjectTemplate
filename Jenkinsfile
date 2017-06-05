@@ -55,8 +55,8 @@ pipeline {
                 }
           }
 
-          def sendData = sendMultiPartFile(readFile: 'bpmn/pay_taxes.bpmn')
-          echo sendData.toString()
+          sendMultiPartFile(readFile: 'bpmn/pay_taxes.bpmn')
+          // echo sendData.toString()
             
           
         }
