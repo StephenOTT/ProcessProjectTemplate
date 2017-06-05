@@ -48,10 +48,10 @@ fi
           def enableDuplicateFiltering = "enable-duplicate-filtering=${deployConfig['enable-duplicate-filtering']}"
           echo enableDuplicateFiltering
           
-          def deployChangedOnly" = "deploy-changed-only=${deployConfig['deploy-changed-only']}"
+          def deployChangedOnly = "deploy-changed-only=${deployConfig['deploy-changed-only']}"
           echo deployChangedOnly
           
-          def deploymentSource" = "deployment-source=${deployConfig['deployment-source']}"
+          def deploymentSource = "deployment-source=${deployConfig['deployment-source']}"
           echo deploymentSource
           
           echo "Files to be deployed"
