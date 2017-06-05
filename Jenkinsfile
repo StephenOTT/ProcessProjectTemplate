@@ -75,11 +75,5 @@ fi
 '''
       }
     }
-    stage('Build CURL') {
-      steps {
-
-        
-      }
-    }
   }
 }
