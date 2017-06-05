@@ -17,49 +17,38 @@ pipeline {
           }
           echo "-------------------------------------------------------"
         }
-        
-         script {
+        script {
           def deployConfig = readJSON file: 'deploy.json'
           def files = deployConfig['deployment']['files']
           echo "-------------------------------------------------------"
           echo "Checking if each File in deploy.json exists:"
           for ( e in files ) {
             if (fileExists("${e.value}")) {
-                echo "${e.key}:${e.value} FOUND"
-              } else {
-                error("${e.key}:${e.value} CANNOT BE FOUND")
-              }
+              echo "${e.key}:${e.value} FOUND"
+            } else {
+              error("${e.key}:${e.value} CANNOT BE FOUND")
+            }
           }
-          echo "-------------------------------------------------------"
         }
-      }}
+      }
+    }
     stage('Build Curl Parameters') {
       steps {
         script {
+          def fields = []
           echo "-------------------------------------------------------"
           echo "Building Curl Base parameters:"
           def deployConfig = readJSON file: 'deploy.json'
 
-          def deploymentName = "deployment-name=${deployConfig['deployment']['deployment-name']}"
-          echo deploymentName
-          
-          def enableDuplicateFiltering = "enable-duplicate-filtering=${deployConfig['deployment']['enable-duplicate-filtering']}"
-          echo enableDuplicateFiltering
-          
-          def deployChangedOnly = "deploy-changed-only=${deployConfig['deployment']['deploy-changed-only']}"
-          echo deployChangedOnly
-          
-          def deploymentSource = "deployment-source=${deployConfig['deployment']['deployment-source']}"
-          echo deploymentSource
-    
+          for ( e in deployConfig ) {
+            if (e.key != "files")) {
+              echo "Deployment Parameter: ${e.key}=${e.value}"
+              fields << "${e.key}=${e.value}"
+            }
+          }
+
           echo "-------------------------------------------------------"
           echo "Building Curl File Parameters"
-          def fields = []
-          fields << deploymentName
-          fields << enableDuplicateFiltering
-          fields << deployChangedOnly
-          fields << deploymentSource
-          
           echo "Files to be deployed:"
           def files = deployConfig['deployment']['files']
           echo files.toString()
