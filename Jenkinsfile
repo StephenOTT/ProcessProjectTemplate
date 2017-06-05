@@ -20,7 +20,7 @@ pipeline {
           
           def props = readJSON file: 'deploy.json'
           
-          echo props.getClass()
+          
         }
         
       }
