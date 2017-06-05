@@ -1,5 +1,5 @@
-@Grab(group='org.apache.httpcomponents', module='httpmime', version='4.5.3')
-@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
+@Grab(group='org.apache.httpcomponents:4.5.3')
+@Grab(group='org.codehaus.groovy.modules.http-builder:0.7.1')
 
 import org.apache.http.entity.mime.MultipartEntity
 import org.apache.http.entity.mime.HttpMultipartMode
@@ -40,7 +40,7 @@ pipeline {
 }
 
 
-void sendMultiPartFile(CommonsMultipartFile multipartImageFile) {
+void sendMultiPartFile(multipartImageFile) {
   def http = new HTTPBuilder("http://www.localhost:8081/engine-rest/deployment/create")
 
   http.request(Method.POST) { req ->
