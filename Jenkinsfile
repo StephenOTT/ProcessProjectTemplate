@@ -56,8 +56,9 @@ fi
           
           echo "Files to be deployed"
           def files = deployConfig['deployment']['files']
+          echo files
           echo files.getClass()
-          file.each {
+          files.each {
             echo ${it.key}
             echo ${it.value}
           }
