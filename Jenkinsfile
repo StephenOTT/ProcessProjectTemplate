@@ -29,8 +29,9 @@ pipeline {
           }
           echo "-------------------------------------------------------"
         }
-
-        
+      }
+  stage('Build Curl String') {
+    steps {   
         script {
           echo "-------------------------------------------------------"
           echo "Building CURL String"
@@ -70,9 +71,11 @@ pipeline {
           echo "Saving CURL String into Env Variable CAMUNDA_CURL:"
           env.CAMUNDA_CURL = curlOutput
           echo "-------------------------------------------------------"
-          
         }
-        
+    }
+  }
+  stage('Deploy to Camunda') {
+    steps {
         sh '''
 echo "-------------------------------------------------------"
 echo "DEPLOYING to Camunda:"
@@ -91,6 +94,8 @@ else
 fi
 '''
       }
+  }
+    }
     }
   }
 }
