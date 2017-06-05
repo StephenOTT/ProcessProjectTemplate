@@ -14,6 +14,17 @@ pipeline {
         }
         
         script {
+          def exists = fileExists 'bpmn/pay_taxes.bpmn'
+          
+          if (exists) {
+            echo 'BPMN found'
+          } else {
+            error("BPMN cannot be found")
+          }
+        }
+        
+        
+        script {
           def props = readJSON file: 'deploy.json'
           echo props.toString()
         }
