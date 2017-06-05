@@ -63,10 +63,9 @@ pipeline {
           
           def output = fields.join(" -F ")
           
-          def curlOutput = "curl -H Accept: application/json -F ${output} http://172.17.0.1:8081/engine-rest/deployment/create"
+          def curlOutput = "curl -H Accept: application/json -F ${output} --url http://172.17.0.1:8081/engine-rest/deployment/create -w \"${http_code}\""
           echo "Final CURL:"
           echo curlOutput
-          echo "-------------------------------------------------------"
           echo "-------------------------------------------------------"
           echo "Saving CURL String into Env Variable CAMUNDA_CURL:"
           env.CAMUNDA_CURL = curlOutput
@@ -75,9 +74,9 @@ pipeline {
         }
         
         sh '''
- echo "-------------------------------------------------------"
- echo "Deploying to Camunda:"
- response=$(${CAMUNDA_CURL})
+echo "-------------------------------------------------------"
+echo "DEPLOYING to Camunda:"
+response=$(${CAMUNDA_CURL})
 
 if [ $response != 200 ]
 then
