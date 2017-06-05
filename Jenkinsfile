@@ -18,7 +18,7 @@ pipeline {
           
           echo deployConfig
           
-          def props = readJSON deployConfig
+          def props = readJSON file: 'deploy.json'
           
           echo props.getClass()
         }
