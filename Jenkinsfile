@@ -59,8 +59,9 @@ fi
           echo files
           echo files.getClass()
           files.each {
-            echo ${it.key}
-            echo ${it.value}
+            k, v ->
+            echo k
+            echo v
           }
         }
         
