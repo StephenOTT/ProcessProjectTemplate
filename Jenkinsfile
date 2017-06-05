@@ -1,15 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('getConflig') {
       steps {
         script {
-          def exists = fileExists 'config.json'
+          def exists = fileExists 'deploy.json'
           
           if (exists) {
-                echo 'File = Yes'
+            Â  Â  echo 'File = Yes'
           } else {
-                echo 'File  = No'
+            Â  Â  echo 'File Â = No'
           }
         }
         
