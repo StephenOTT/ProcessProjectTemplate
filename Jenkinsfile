@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('getConflig') {
+    stage('Deploy.json Review') {
       steps {
         script {
           def exists = fileExists 'deploy.json'
