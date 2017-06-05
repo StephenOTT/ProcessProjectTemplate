@@ -27,7 +27,7 @@ pipeline {
           "tenant-id": "My Tenant"}
           """
           
-          def response = httpRequest acceptType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: payload, url: "https://localhost:8081/engine-rest/deployment/create"
+          def response = httpRequest acceptType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: payload, url: "http://localhost:8081/engine-rest/deployment/create"
         }
         
       }
