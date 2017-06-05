@@ -7,12 +7,11 @@ pipeline {
           def exists = fileExists 'deploy.json'
           
           if (exists) {
-                echo 'File = Yes'
+            echo 'File = Yes'
           } else {
-                echo 'File  = No'
+            echo 'File = No'
           }
         }
-        
       }
     }
   }
