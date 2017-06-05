@@ -41,7 +41,7 @@ pipeline {
           def deployConfig = readJSON file: 'deploy.json'
 
           for ( e in deployConfig ) {
-            if (e.key != "files")) {
+            if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
               fields << "${e.key}=${e.value}"
             }
