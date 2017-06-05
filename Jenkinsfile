@@ -42,16 +42,16 @@ fi
         script {
           def deployConfig = readJSON file: 'deploy.json'
           
-          def deploymentName = "deployment-name=${deployConfig['deployment']['deployment-name']}"
+          def deploymentName = "'deployment-name=${deployConfig['deployment']['deployment-name']}'"
           echo deploymentName
           
-          def enableDuplicateFiltering = "enable-duplicate-filtering=${deployConfig['deployment']['enable-duplicate-filtering']}"
+          def enableDuplicateFiltering = "'enable-duplicate-filtering=${deployConfig['deployment']['enable-duplicate-filtering']}'"
           echo enableDuplicateFiltering
           
-          def deployChangedOnly = "deploy-changed-only=${deployConfig['deployment']['deploy-changed-only']}"
+          def deployChangedOnly = "'deploy-changed-only=${deployConfig['deployment']['deploy-changed-only']}'"
           echo deployChangedOnly
           
-          def deploymentSource = "deployment-source=${deployConfig['deployment']['deployment-source']}"
+          def deploymentSource = "'deployment-source=${deployConfig['deployment']['deployment-source']}'"
           echo deploymentSource
           
           def fields = []
@@ -64,7 +64,7 @@ fi
           def files = deployConfig['deployment']['files']
           echo files.toString()
           files.each {
-            k, v -> fields << "${k}=@${v}"
+            k, v -> fields << "'${k}=@${v}'"
           }
           
           def output = fields.join(" -F ")
