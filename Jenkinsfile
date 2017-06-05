@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Check Deployment Files') {
+    stage('Check Deployment Files:') {
       steps {
         script {
           def exists = fileExists 'deploy.json'
@@ -30,11 +30,11 @@ pipeline {
           echo "-------------------------------------------------------"
         }
       }}
-    stage('Build Curl String') {
+    stage('Build Curl Parameters') {
       steps {
         script {
           echo "-------------------------------------------------------"
-          echo "Building Curl Base parameters"
+          echo "Building Curl Base parameters:"
           def deployConfig = readJSON file: 'deploy.json'
 
           def deploymentName = "deployment-name=${deployConfig['deployment']['deployment-name']}"
@@ -48,8 +48,7 @@ pipeline {
           
           def deploymentSource = "deployment-source=${deployConfig['deployment']['deployment-source']}"
           echo deploymentSource
-        }
-        script {
+    
           echo "-------------------------------------------------------"
           echo "Building Curl File Parameters"
           def fields = []
@@ -64,15 +63,16 @@ pipeline {
           files.each {
             k, v -> fields << "${k}=@${v}"
           }
-        }
-        script {
+          
           echo "-------------------------------------------------------"
           echo "Building Concatinated Parameters"
           def output = fields.join(" -F ")
-
+          env.CAMUNDA_PARAMETERS = output
+        }
+        script {
           echo "-------------------------------------------------------"
           echo "Building Full CURL String:"
-          def curlOutput = "curl --url ${CAMUNDA_API_URL}/engine-rest/deployment/create -H Accept:application/json -F ${output} -w \"%{http_code}\""
+          def curlOutput = "curl --url ${CAMUNDA_API_URL}/engine-rest/deployment/create -H Accept:application/json -F ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final CURL String:"
           echo curlOutput
           echo "-------------------------------------------------------"
