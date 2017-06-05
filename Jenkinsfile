@@ -76,7 +76,7 @@ pipeline {
           echo props.toString()
         }
         
-        sh '''response=$(${CAMUNDA_CURL})
+        sh '''response=$(curl -H "Accept: application/json" -F "deployment-name=MyDeployment" -F "enable-duplicate-filtering=false" -F "deploy-changed-only=false" -F "deployment-source=AutomatedDeployment" -F "pay_taxes.bpmn=@bpmn/pay_taxes.bpmn" http://172.17.0.1:8081/engine-rest/deployment/create)
 
 if [ $response != 200 ]
 then
