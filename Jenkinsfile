@@ -4,7 +4,7 @@ pipeline {
     stage('getConflig') {
       steps {
         script {
-          def exists = fileExists 'deploy.json'
+          def exists = fileExists 'deploy1.json'
           
           if (exists) {
             echo 'File = Yes'
@@ -12,6 +12,7 @@ pipeline {
             echo 'File = No'
           }
         }
+        
       }
     }
   }
