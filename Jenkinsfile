@@ -57,7 +57,7 @@ fi
           echo "Files to be deployed"
           deployConfig['files'].each {
             echo ${it.key}
-            echo ${if.value}
+            echo ${it.value}
           }
         }
         
