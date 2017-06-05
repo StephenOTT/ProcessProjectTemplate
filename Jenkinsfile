@@ -19,7 +19,7 @@ pipeline {
           echo deployConfig
           
           def props = readJSON file: 'deploy.json'
-          echo props
+          echo props.toString()
         }
         
       }
