@@ -7,13 +7,13 @@ pipeline {
           def exists = fileExists 'deploy.json'
           
           if (exists) {
-              echo 'deploy.json found'
+            echo 'deploy.json found'
           } else {
-              error("deploy.json cannot be found")
+            error("deploy.json cannot be found")
           }
         }
         
-        script {          
+        script {
           def deployConfig = readFile 'deploy.json'
         }
         
