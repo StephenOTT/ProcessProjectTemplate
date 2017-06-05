@@ -1,5 +1,6 @@
-@Grab(group='org.apache.httpcomponents', module='httpmime', version='4.5.3')
-@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
+@Grab('org.apache.http.entity.mime.HttpMultipartMode:4.3.1')
+@Grab('org.apache.http.entity.mime.content.InputStreamBody:4.3.1')
+@Grab('org.apache.http.entity.mime.content.StringBody:4.3.1')
 
 import org.apache.http.entity.mime.MultipartEntity
 import org.apache.http.entity.mime.HttpMultipartMode
