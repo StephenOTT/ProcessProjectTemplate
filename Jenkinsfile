@@ -36,16 +36,16 @@ pipeline {
                 script {
           def deployConfig = readJSON file: 'deploy.json'
 
-          def deploymentName = "\"deployment-name=${deployConfig['deployment']['deployment-name']}\""
+          def deploymentName = "deployment-name=${deployConfig['deployment']['deployment-name']}"
           echo deploymentName
           
-          def enableDuplicateFiltering = "\"enable-duplicate-filtering=${deployConfig['deployment']['enable-duplicate-filtering']}\""
+          def enableDuplicateFiltering = "enable-duplicate-filtering=${deployConfig['deployment']['enable-duplicate-filtering']}"
           echo enableDuplicateFiltering
           
-          def deployChangedOnly = "\"deploy-changed-only=${deployConfig['deployment']['deploy-changed-only']}\""
+          def deployChangedOnly = "deploy-changed-only=${deployConfig['deployment']['deploy-changed-only']}"
           echo deployChangedOnly
           
-          def deploymentSource = "\"deployment-source=${deployConfig['deployment']['deployment-source']}\""
+          def deploymentSource = "deployment-source=${deployConfig['deployment']['deployment-source']}"
           echo deploymentSource
           
           def fields = []
@@ -58,12 +58,12 @@ pipeline {
           def files = deployConfig['deployment']['files']
           echo files.toString()
           files.each {
-            k, v -> fields << "\"${k}=@${v}\""
+            k, v -> fields << "${k}=@${v}"
           }
           
           def output = fields.join(" -F ")
           
-          def curlOutput = "curl -H \"Accept: application/json\" -F ${output} http://172.17.0.1:8081/engine-rest/deployment/create"
+          def curlOutput = "curl -H Accept: application/json -F ${output} http://172.17.0.1:8081/engine-rest/deployment/create"
           echo "Final CURL:"
           echo curlOutput
           env.CAMUNDA_CURL = curlOutput        
@@ -76,7 +76,7 @@ pipeline {
           echo props.toString()
         }
         
-        sh '''response=$(curl -H "Accept: application/json" -F "deployment-name=My Deployment 1" -F "enable-duplicate-filtering=false" -F "deploy-changed-only=false" -F "deployment-source=AutomatedDeployment" -F "pay_taxes.bpmn=@bpmn/pay_taxes.bpmn" http://172.17.0.1:8081/engine-rest/deployment/create)
+        sh '''response=$(${CAMUNDA_CURL})
 
 if [ $response != 200 ]
 then
