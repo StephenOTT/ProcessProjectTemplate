@@ -6,6 +6,7 @@
     "deployment-source": "AutomatedDeployment",
     "tenant-id": "My Tenant",
     "files": {
+      "config.json": "resources/condig.json",
       "pay_taxes.bpmn": "bpmn/pay_taxes.bpmn"
     }
   },
