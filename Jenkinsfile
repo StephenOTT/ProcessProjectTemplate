@@ -23,23 +23,7 @@ pipeline {
           }
         }
         
-        script {
-          def props = readJSON file: 'deploy.json'
-          echo props.toString()
-        }
-        
-        sh '''response=$(curl -H "Accept: application/json" -F "deployment-name=JenkinsDeployment" -F "enable-duplicate-filtering=false" -F "deploy-changed-only=false" -F "myBPMN.bpmn=@bpmn/pay_taxes.bpmn" --url "http://172.17.0.1:8081/engine-rest/deployment/create" -w "%{http_code}")
-
-if [ $response != 200 ]
-then
- exit 1
-fi
-'''
-      }
-    }
-    stage('Build CURL') {
-      steps {
-        script {
+                script {
           def deployConfig = readJSON file: 'deploy.json'
           
           def deploymentName = "'deployment-name=${deployConfig['deployment']['deployment-name']}'"
@@ -69,12 +53,31 @@ fi
           
           def output = fields.join(" -F ")
           
-          def curlOutput = "curl -H 'Accept: application/json' -F ${output}  --url 'http://172.17.0.1:8081/engine-rest/deployment/create' -w '%{http_code}'"
+          def curlOutput = "curl -H 'Accept: application/json' -F ${output} --url 'http://172.17.0.1:8081/engine-rest/deployment/create' -w '%{http_code}'"
           echo "Final CURL:  "
           echo curlOutput
-          
+          env.CAMUNDA_CURL = curlOutput        
           
         }
+        
+        
+        script {
+          def props = readJSON file: 'deploy.json'
+          echo props.toString()
+        }
+        
+        sh '''response=$(env.CAMUNDA_CURL)
+
+if [ $response != 200 ]
+then
+ exit 1
+fi
+'''
+      }
+    }
+    stage('Build CURL') {
+      steps {
+
         
       }
     }
