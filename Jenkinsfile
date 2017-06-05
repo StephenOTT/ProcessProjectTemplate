@@ -1,8 +1,5 @@
-@Grab('org.apache.http.entity.mime.MultipartEntity:4.3.1')
-@Grab('org.apache.http.entity.mime.HttpMultipartMode:4.3.1')
-@Grab('org.apache.http.entity.mime.content.InputStreamBody:4.3.1')
-@Grab('org.apache.http.entity.mime.content.StringBody:4.3.1')
-@Grab('groovyx.net.http.*:0.7.1')
+@Grab(group='org.apache.httpcomponents', module='httpmime', version='4.5.3')
+@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1')
 
 import org.apache.http.entity.mime.MultipartEntity
 import org.apache.http.entity.mime.HttpMultipartMode
@@ -17,26 +14,26 @@ pipeline {
       steps {
         script {
           def exists = fileExists 'deploy.json'
-          
+
           if (exists) {
             echo 'deploy.json found'
           } else {
             error("deploy.json cannot be found")
           }
         }
-        
+
         script {
           def props = readJSON file: 'deploy.json'
           echo props.toString()
         }
-        
+
         script {
           sendMultiPartFile(readFile: 'bpmn/pay_taxes.bpmn')
           // echo sendData.toString()
-            
-          
+
+
         }
-        
+
       }
     }
   }
