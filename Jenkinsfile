@@ -57,9 +57,8 @@ fi
           echo "Files to be deployed"
           def files = deployConfig['deployment']['files']
           echo files
-          echo files.getClass()
           files.each {
-            k, v -> echo "${k}  :  ${v}"
+            k, v -> echo "${k.toString()}  :  ${v.toString()}"
           }
         }
         
