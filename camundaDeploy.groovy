@@ -6,5 +6,3 @@ void parallelize(int count) {
   }
   // …
 }
-
-parallelize(10)
