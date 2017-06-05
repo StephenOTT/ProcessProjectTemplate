@@ -54,12 +54,26 @@ fi
           def deploymentSource = "deployment-source=${deployConfig['deployment']['deployment-source']}"
           echo deploymentSource
           
+          def fields = []
+          fields << deploymentName
+          fields << enableDuplicateFiltering
+          fields << deployChangedOnly
+          fields << deploymentSource
+          
           echo "Files to be deployed"
           def files = deployConfig['deployment']['files']
           echo files.toString()
           files.each {
-            k, v -> echo "${k.toString()}  :  ${v.toString()}"
+            k, v -> fields << "${k}=@${v}"
           }
+          
+          def output = fields.join(" -F ")
+          
+          def curlOutput = 'curl -H "Accept: application/json" -F ${output}  --url "http://172.17.0.1:8081/engine-rest/deployment/create" -w "%{http_code}"'
+          echo "Final CURL:"
+          echo curlOutput
+          
+          
         }
         
       }
