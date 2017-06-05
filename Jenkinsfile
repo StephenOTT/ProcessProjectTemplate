@@ -59,9 +59,7 @@ fi
           echo files
           echo files.getClass()
           files.each {
-            k, v ->
-            echo k
-            echo v
+            k, v -> echo "${k}  :  ${v}"
           }
         }
         
