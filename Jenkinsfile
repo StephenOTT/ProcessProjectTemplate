@@ -14,6 +14,7 @@ pipeline {
         }
         
          script {
+          def deployConfig = readJSON file: 'deploy.json'
           def files = deployConfig['deployment']['files']
           for ( e in files ) {
               if (fileExists(${e.value})) {
