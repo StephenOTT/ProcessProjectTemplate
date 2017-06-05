@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+    string(name: 'CAMUNDA_URL', defaultValue: 'http://172.17.0.1:8081', description: 'URL of Camunda Instance.')
+  }
   stages {
     stage('Check Deployment Files:') {
       steps {
@@ -72,7 +75,7 @@ pipeline {
         script {
           echo "-------------------------------------------------------"
           echo "Building Full CURL String:"
-          def curlOutput = "curl --url ${CAMUNDA_API_URL}/engine-rest/deployment/create -H Accept:application/json -F ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
+          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json -F ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final CURL String:"
           echo curlOutput
           echo "-------------------------------------------------------"
