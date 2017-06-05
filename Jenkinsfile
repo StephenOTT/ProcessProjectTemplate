@@ -19,6 +19,7 @@ pipeline {
         }
         
         load 'camundaDeploy.groovy'
+        camundaDeploy.parallelize(10)
       }
     }
   }
