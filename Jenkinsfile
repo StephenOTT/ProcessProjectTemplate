@@ -22,6 +22,16 @@ pipeline {
             error("BPMN cannot be found")
           }
         }
+ 
+       script {
+          def exists = fileExists 'resources/config.json'
+          
+          if (exists) {
+            echo 'config.json found'
+          } else {
+            error("config.json cannot be found")
+          }
+        }
         
                 script {
           def deployConfig = readJSON file: 'deploy.json'
