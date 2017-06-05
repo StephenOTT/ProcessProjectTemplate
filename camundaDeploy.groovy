@@ -1,6 +1,7 @@
 @Grapes([
   @Grab(group='org.apache.httpcomponents', module='httpmime', version='4.5.3'),
-  @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7')
+  @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7'),
+  @GrabConfig(systemClassLoader=true)
 ])
 import org.apache.http.entity.mime.MultipartEntity
 import org.apache.http.entity.mime.HttpMultipartMode
