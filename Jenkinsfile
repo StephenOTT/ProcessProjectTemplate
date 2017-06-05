@@ -66,7 +66,7 @@ pipeline {
           echo props.toString()
         }
         
-        sh '''response=$(env.CAMUNDA_CURL)
+        sh '''response=$(${env.CAMUNDA_CURL})
 
 if [ $response != 200 ]
 then
