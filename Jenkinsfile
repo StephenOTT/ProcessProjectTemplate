@@ -37,5 +37,31 @@ fi
 '''
       }
     }
+    stage('Build CURL') {
+      steps {
+        script {
+          def deployConfig = readJSON file: 'deploy.json'
+          
+          def deploymentName = "deployment-name=${deployConfig['deployment-name']}"
+          echo deploymentName
+          
+          def enableDuplicateFiltering = "enable-duplicate-filtering=${deployConfig['enable-duplicate-filtering']}"
+          echo enableDuplicateFiltering
+          
+          def deployChangedOnly" = "deploy-changed-only=${deployConfig['deploy-changed-only']}"
+          echo deployChangedOnly
+          
+          def deploymentSource" = "deployment-source=${deployConfig['deployment-source']}"
+          echo deploymentSource
+          
+          echo "Files to be deployed"
+          deployConfig['files'].each {
+            echo ${it.key}
+            echo ${if.value}
+          }
+        }
+        
+      }
+    }
   }
 }
