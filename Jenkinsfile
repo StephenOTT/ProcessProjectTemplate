@@ -13,27 +13,21 @@ pipeline {
           }
         }
         
-        script {
-          def exists = fileExists 'bpmn/pay_taxes.bpmn'
-          
-          if (exists) {
-            echo 'BPMN found'
-          } else {
-            error("BPMN cannot be found")
+         script {
+          def files = deployConfig['deployment']['files']
+          files.each {
+            k, v -> 
+              def exists fileExists ${v}
+              if (exists) {
+                echo "${k}:${v} FOUND"
+              } else {
+                error("${k}:${v} CANNOT BE FOUND")
+              }
           }
         }
- 
-       script {
-          def exists = fileExists 'resources/config.json'
-          
-          if (exists) {
-            echo 'config.json found'
-          } else {
-            error("config.json cannot be found")
-          }
-        }
+
         
-                script {
+        script {
           def deployConfig = readJSON file: 'deploy.json'
 
           def deploymentName = "deployment-name=${deployConfig['deployment']['deployment-name']}"
@@ -68,12 +62,6 @@ pipeline {
           echo curlOutput
           env.CAMUNDA_CURL = curlOutput        
           
-        }
-
-        script {
-          def props = readJSON file: 'deploy.json'
-          echo "DEPLOY.json Contains:"
-          echo props.toString()
         }
         
         sh '''response=$(${CAMUNDA_CURL})
