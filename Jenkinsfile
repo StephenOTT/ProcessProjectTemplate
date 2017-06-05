@@ -24,12 +24,12 @@ pipeline {
         }
  
        script {
-          def exists = fileExists 'resources/config1.json'
+          def exists = fileExists 'resources/config.json'
           
           if (exists) {
-            echo 'config1.json found'
+            echo 'config.json found'
           } else {
-            error("config1.json cannot be found")
+            error("config.json cannot be found")
           }
         }
         
