@@ -40,7 +40,7 @@ pipeline {
           echo "Building Curl Base Parameters:"
           def deployConfig = readJSON file: 'deploy.json'
 
-          for ( e in deployConfig ) {
+          for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
               fields << "--form-string \"${e.key}=${e.value}\""
