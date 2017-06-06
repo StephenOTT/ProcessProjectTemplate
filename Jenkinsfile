@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--data-urlencode \"${e.key}=${e.value}\""
+              fields << "--data-urlencode ${e.key}=\"${e.value}\""
             }
           }
 
