@@ -6,35 +6,35 @@
 
 # Files
 
-*Explain what is the purpose of each process file in the project.*
+*Explain what is the purpose of each process and process related file in the project.*
 
-## File_1.bpmn
+## pay_taxes.bpmn
 
 This file does something and its purpose is to do abc.
 
-![File 1 BPMN File](docs/images/BPMN_image_example.png)
+![pay_taxes BPMN File](docs/images/BPMN_image_example.png)
 
-## File_2.dmn
+## myDecision.dmn
 
 This file does something and its purpose is to do abc.
 
 1. DDR
 1. DMN
 
-![File 2 DDR File](docs/images/DDR_image_example.png)
-![File 2 DMN File](docs/images/DMN_image_example.png)
+![myDecision DDR File](docs/images/DDR_image_example.png)
+![myDecision DMN File](docs/images/DMN_image_example.png)
 
-## File_3.cmmn
-
-This file does something and its purpose is to do abc.
-
-![File 3 CMMN File](docs/images/CMMN_image_example.png)
-
-## File_4.js
+## myCasePattern.cmmn
 
 This file does something and its purpose is to do abc.
 
-## File_5.ftl
+![myCasePattern CMMN File](docs/images/CMMN_image_example.png)
+
+## myScripts.js
+
+This file does something and its purpose is to do abc.
+
+## myEmailTemplate.ftl
 
 This file does something and its purpose is to do abc.
 
@@ -42,13 +42,14 @@ Image example of the Rendered Freemarker file (if applicable)
 
 # How to Deploy
 
-Explnation of how to deploy this specific project goes here.
+Explanation of how to deploy this specific project goes here.
 
-For further deployment options and templates see: [Deployment Documentation]](docs/deployment.md)
+*For further deployment options and templates see: [Deployment Documentation]](docs/deployment.md)*
 
 # Change Log
 
-[Change Log](CHANGELOG.md)
+*Store details about the releases of your project in the Change Log*
+[Project Change Log](CHANGELOG.md)
 
 # Other Information
 
