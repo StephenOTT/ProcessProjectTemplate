@@ -35,3 +35,9 @@ The typical use case is as follows:
 1. The following [Script Approvals](https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin/#ScriptSecurityPlugin-ScriptApproval) will be required:
   1. `method org.apache.commons.collections.KeyValue getKey`
   1. `method org.apache.commons.collections.KeyValue getValue`
+
+#### Current Limitations
+
+1. It is assumed that Jenkins can connect to the Camunda API without Basic Auth Protection.
+1. Camunda Deployment-Name and Camunda Deployment-Source values must not contain spaces (this is checked during the build and will fail the build if spaces are found).
+1. The JSON response from Camunda is not currently parsed correctly by Jenkins cURL implementation.  As a result any spaces in the values will cause the response to be cut off.
