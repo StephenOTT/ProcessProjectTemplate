@@ -1,6 +1,6 @@
 {
   "deployment": {
-    "deployment-name": "Process_Project_Template_ABC123",
+    "deployment-name": "Process Project Template ABC123",
     "enable-duplicate-filtering": false,
     "deploy-changed-only": false,
     "deployment-source": "Jenkins_Automated_Deployment",
