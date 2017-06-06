@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--data-urlencode \'${e.key}=${e.value}\'"
+              fields << "--data-urlencode \"${e.key}=${e.value}\""
             }
           }
 
@@ -64,7 +64,7 @@ pipeline {
         script {
           echo "-------------------------------------------------------"
           echo "Building Full CURL String:"
-          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
+          def curlOutput = "curl -X POST --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final CURL String:"
           echo curlOutput
           echo "-------------------------------------------------------"
@@ -81,7 +81,7 @@ pipeline {
           echo "DEPLOYING to Camunda:"
           response=$(${CAMUNDA_CURL})
 
-          if [ $response.equals(200) ]
+          if [ !$response.equals(200) ]
           then
           echo "-------------------------------------------------------"
           echo "ERROR: Did not receive Status Code 200 from Camunda"
