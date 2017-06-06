@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--form-string ${e.key}=${e.value.encodeURL()}"
+              fields << "--form-string ${e.key}=${java.net.URLEncoder.encode(e.value., "UTF-8")}"
             }
           }
 
