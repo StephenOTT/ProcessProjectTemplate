@@ -33,8 +33,8 @@ The typical use case is as follows:
 
 1. [Pipeline utility steps plugin](https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Utility+Steps+Plugin): This allows the reading and parsing of the `deploy.json` file by jenkins.
 1. The following [Script Approvals](https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin/#ScriptSecurityPlugin-ScriptApproval) will be required:
-  1. `method org.apache.commons.collections.KeyValue getKey`
-  1. `method org.apache.commons.collections.KeyValue getValue`
+    1. `method org.apache.commons.collections.KeyValue getKey`
+    1. `method org.apache.commons.collections.KeyValue getValue`
 
 #### Current Limitations
 
