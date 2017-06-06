@@ -9,7 +9,7 @@ pipeline {
         script {
           def exists = fileExists 'deploy.json'
           echo "-------------------------------------------------------"
-          echo "Checking for deploy.json:"
+          echo "Looking for deploy.json:"
           if (exists) {
             echo 'deploy.json found'
           } else {
@@ -21,7 +21,7 @@ pipeline {
           def deployConfig = readJSON file: 'deploy.json'
           def files = deployConfig['deployment']['files']
           echo "-------------------------------------------------------"
-          echo "Checking if each File in deploy.json exists:"
+          echo "Looking if each File in deploy.json exists:"
           for ( e in files ) {
             if (fileExists("${e.value}")) {
               echo "${e.key}:${e.value} FOUND"
@@ -42,6 +42,11 @@ pipeline {
 
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
+              if (e.key.toString().contains(' ')) {
+                error("Argument Keyt \"${e.key}\" contains one or more spaces. Arguments Keys cannot contain spaces.")
+              } else if (e.value.toString().contains(' ') {
+                 error("Argument Value \"${e.value}\" contains one or more spaces. Argument Values cannot contain spaces.")
+              }
               echo "Deployment Parameter: ${e.key}=${e.value}"
               fields << "--form-string \"${e.key}=${e.value}\""
             }
