@@ -64,7 +64,7 @@ pipeline {
         script {
           echo "-------------------------------------------------------"
           echo "Building Full CURL String:"
-          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json --form-string ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
+          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final CURL String:"
           echo curlOutput
           echo "-------------------------------------------------------"
