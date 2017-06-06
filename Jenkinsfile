@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--form-string \"${e.key}=${e.value.toString().replaceAll(' ','%20')}\""
+              fields << "--form-string ${e.key}=${e.value.toString().replaceAll(' ','%20')}"
             }
           }
 
@@ -81,7 +81,7 @@ pipeline {
           echo "DEPLOYING to Camunda:"
           response=$(${CAMUNDA_CURL})
 
-          if [ $response != 200 ]
+          if [ $response.equals(200) ]
           then
           echo "-------------------------------------------------------"
           echo "ERROR: Did not receive Status Code 200 from Camunda"
