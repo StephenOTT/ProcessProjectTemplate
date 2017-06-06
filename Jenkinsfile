@@ -59,9 +59,9 @@ pipeline {
           echo files.toString()
           for ( e in files ) {
                if (e.key.toString().contains(' ')) {
-                error("Argument Key: \"${e.key}\" contains one or more spaces. File Name Keys cannot contain spaces.")
+                error("Argument Key: \"${e.key}\" contains one or more spaces. File Names (Argument Keys) cannot contain spaces.")
               } else if (e.value.toString().contains(' ')) {
-                 error("Argument Value: \"${e.value}\" contains one or more spaces. File Names Values cannot contain spaces.")
+                 error("Argument Value: \"${e.value}\" contains one or more spaces. File Paths (Argument Values) cannot contain spaces.")
                } else {
                  fields << "-F ${e.key}=@${e.value}"
                }
