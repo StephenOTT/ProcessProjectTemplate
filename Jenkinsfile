@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--data-urlencode \"${e.key}=${e.value}\""
+              fields << "--form-string \"${e.key}=${e.value}\""
             }
           }
 
@@ -53,7 +53,7 @@ pipeline {
           def files = deployConfig['deployment']['files']
           echo files.toString()
           files.each {
-            k, v -> fields << "--data-urlencode ${k}@${v}"
+            k, v -> fields << "-F ${k}=@${v}"
           }
           
           echo "-------------------------------------------------------"
