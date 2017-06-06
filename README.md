@@ -49,6 +49,7 @@ Explanation of how to deploy this specific project goes here.
 # Change Log
 
 *Store details about the releases of your project in the Change Log*
+
 [Project Change Log](CHANGELOG.md)
 
 # Other Information
