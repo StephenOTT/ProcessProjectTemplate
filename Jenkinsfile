@@ -63,7 +63,7 @@ pipeline {
               } else if (e.value.toString().contains(' ')) {
                  error("Argument Value: \"${e.value}\" contains one or more spaces. File Names Values cannot contain spaces.")
                } else {
-                 fields << "-F ${k}=@${v}"
+                 fields << "-F ${e.key}=@${e.value}"
                }
           }
           
