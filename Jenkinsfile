@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--form-string \"${e.key}=${e.value.replace(' ','%20')}\""
+              fields << "--form-string \"${e.key}=${e.value.replaceAll(' ','%20')}\""
             }
           }
 
