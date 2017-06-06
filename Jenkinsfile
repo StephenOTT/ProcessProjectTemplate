@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
-                error("Argument Keyt \"${e.key}\" contains one or more spaces. Arguments Keys cannot contain spaces.")
+                error("Argument Key: \"${e.key}\" contains one or more spaces. Arguments Keys cannot contain spaces.")
               } else if (e.value.toString().contains(' ')) {
                  error("Argument Value \"${e.value}\" contains one or more spaces. Argument Values cannot contain spaces.")
               }
@@ -57,8 +57,14 @@ pipeline {
           echo "Files to be deployed:"
           def files = deployConfig['deployment']['files']
           echo files.toString()
-          files.each {
-            k, v -> fields << "-F ${k}=@${v}"
+          for ( e in files ) {
+               if (e.key.toString().contains(' ')) {
+                error("Argument Key: \"${e.key}\" contains one or more spaces. File Name Keys cannot contain spaces.")
+              } else if (e.value.toString().contains(' ')) {
+                 error("Argument Value: \"${e.value}\" contains one or more spaces. File Names Values cannot contain spaces.")
+               } else {
+                 fields << "-F ${k}=@${v}"
+               }
           }
           
           echo "-------------------------------------------------------"
