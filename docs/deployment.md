@@ -7,6 +7,42 @@ There are several ways to deploy Camunda process files.  This project template f
 1. [Postman Collection](ProcessProjectRenameMe.postman_collection)
 1. [Postman Environment Variables](CamundaServer.postman_environment)
 
+## `deploy.json`
+
+The `deploy.json` file describes the [Camunda Process Deployment](https://docs.camunda.org/manual/7.7/reference/rest/deployment/post-deployment/).
+
+The structure is as follows:
+Example:
+
+```json
+{
+  "deployment": {
+    "deployment-name": "Process_Project_Template_ABC123",
+    "enable-duplicate-filtering": false,
+    "deploy-changed-only": false,
+    "deployment-source": "Jenkins_Automated_Deployment",
+    "tenant-id": "123456789",
+    "files": {
+      "config.json": "resources/config.json",
+      "pay_taxes.bpmn": "bpmn/pay_taxes.bpmn"
+    }
+  },
+  "migration": {
+    "perform_migration": false,
+    "plan": {}
+  }
+}
+```
+
+The `deployment` object contains the request body parameters of the Camunda [Deployment CreateAPI endpoint ](https://docs.camunda.org/manual/7.7/reference/rest/deployment/post-deployment/).  
+
+The inner `files` object contains the key/value mapping of binary files that will be uploaded to camunda during the deployment.
+
+The pattern for the `files` object is `"filename_as_saved_in_Camunda.extension":"path/to/file/in/repository.extension"`.  Example: `"config.json":"resources/config.json"`.
+
+The `migration` object is for future use related to Camunda [Migrations](https://docs.camunda.org/manual/7.7/reference/rest/migration/), but is not currently functional/implemented.
+
+
 ## Automated Deployment
 
 ### Jenkins
