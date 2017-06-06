@@ -18,10 +18,10 @@ This file does something and its purpose is to do abc.
 
 This file does something and its purpose is to do abc.
 
-1. DDR
+1. DRD
 1. DMN
 
-![myDecision DDR File](docs/images/DDR_image_example.png)
+![myDecision DRD File](docs/images/DRD_image_example.png)
 ![myDecision DMN File](docs/images/DMN_image_example.png)
 
 ## myCasePattern.cmmn
