@@ -1,3 +1,12 @@
+//-------------------------------------------------------------------------
+// The following build provides the ability to deploy Camunda process files to the Camunda REST API
+// The build has the following requirements:
+// 1. Pipeline Utility Steps Plugin (https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Utility+Steps+Plugin)
+// 2. The following Script Approvals(https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin/#ScriptSecurityPlugin-ScriptApproval)
+//    will be required:
+//        1. method org.apache.commons.collections.KeyValue getKey
+//        2. method org.apache.commons.collections.KeyValue getValue
+//-------------------------------------------------------------------------
 pipeline {
   agent any
   parameters {
@@ -68,7 +77,7 @@ pipeline {
               fields << "-F ${e.key}=@${e.value}"
             }
           }
-          
+
           echo "-------------------------------------------------------"
           echo "Building Concatinated Arguments"
           def output = fields.join(" ")
