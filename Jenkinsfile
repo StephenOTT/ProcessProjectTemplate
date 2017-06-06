@@ -43,7 +43,7 @@ pipeline {
           for ( e in deployConfig['deployment'] ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--form-string ${e.key}=${e.value.toString().replaceAll(' ','+')}"
+              fields << "--form-string \'${e.key}=${e.value}\'"
             }
           }
 
@@ -64,7 +64,7 @@ pipeline {
         script {
           echo "-------------------------------------------------------"
           echo "Building Full CURL String:"
-          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
+          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json -H Content-Type:multipart/form-data ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final CURL String:"
           echo curlOutput
           echo "-------------------------------------------------------"
