@@ -6,7 +6,7 @@
     "deployment-source": "Jenkins_Automated_Deployment",
     "files": {
       "config.json": "resources/config.json",
-      "pay_taxes.bpmn": "bpmn/pay_taxes.bpmn"
+      "pay_taxes.bpmn": "bpmn/pay taxes.bpmn"
     }
   },
   "migration": {
