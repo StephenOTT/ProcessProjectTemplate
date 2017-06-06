@@ -48,7 +48,7 @@ pipeline {
                  error("Argument Value \"${e.value}\" contains one or more spaces. Argument Values cannot contain spaces.")
               }
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "--form-string \"${e.key}=${e.value}\""
+              fields << "--form-string ${e.key}=${e.value}"
             }
           }
 
