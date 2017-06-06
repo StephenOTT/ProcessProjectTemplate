@@ -1,16 +1,12 @@
 {
   "deployment": {
-    "deployment-name": "My Deployment",
+    "deployment-name": "Process_Project_Template_ABC123",
     "enable-duplicate-filtering": false,
     "deploy-changed-only": false,
-    "deployment-source": "Automated Deployment",
-    "tenant-id": "My Tenant",
+    "deployment-source": "Jenkins_Automated_Deployment",
     "files": {
       "config.json": "resources/config.json",
-      "File_1.bpmn": "bpmn/File_1.bpmn",
-      "File_2.dmn": "dmn/File_2.dmn",
-      "File_3.cmmn": "cmmn/File_3.cmmn",
-      "File_4.js": "resources/scripts/File_4.js"
+      "pay_taxes.bpmn": "bpmn/pay_taxes.bpmn"
     }
   },
   "migration": {
