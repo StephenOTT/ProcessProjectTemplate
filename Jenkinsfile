@@ -90,15 +90,15 @@ pipeline {
     stage('Deploy to Camunda') {
       steps {
         sh '''
-          printf "-------------------------------------------------------\nDEPLOYING to Camunda:\n-------------------------------------------------------"
+          echo "-------------------------------------------------------\nDEPLOYING to Camunda:\n-------------------------------------------------------"
           response=$(${CAMUNDA_CURL})
 
           if [ $response != 200 ]
           then
-            printf "-------------------------------------------------------\nERROR: Did not receive Status Code 200 from Camunda\n-------------------------------------------------------"
+            echo "-------------------------------------------------------\nERROR: Did not receive Status Code 200 from Camunda\n-------------------------------------------------------"
             exit 1
           else
-            printf "-------------------------------------------------------\nSUCCESS: Received Status Code 200: Successfully Deployed to Camunda\n-------------------------------------------------------"
+            echo "-------------------------------------------------------\nSUCCESS: Received Status Code 200: Successfully Deployed to Camunda\n-------------------------------------------------------"
           fi
         '''
       }
