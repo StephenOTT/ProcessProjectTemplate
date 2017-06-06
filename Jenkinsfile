@@ -92,11 +92,11 @@ pipeline {
           echo "DEPLOYING to Camunda:"
           response=$(${CAMUNDA_CURL})
 
-          if [ !$response.equals(200) ]
+          if [ $response != 200 ]
           then
-          echo "-------------------------------------------------------"
-          echo "ERROR: Did not receive Status Code 200 from Camunda"
-          echo "-------------------------------------------------------"
+            echo "-------------------------------------------------------"
+            echo "ERROR: Did not receive Status Code 200 from Camunda"
+            echo "-------------------------------------------------------"
            exit 1
           else
             echo "-------------------------------------------------------"
