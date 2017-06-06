@@ -65,3 +65,10 @@ Examples:
 1. Project Contact information/Persons Responsible.
 1. Explanation of designs and specific configurations.
 1. Related documentation that may be contained in another system or the `/docs` folder.
+
+## Additional Support documentation
+
+See the following for additional support documentation related to building and managing process projects:
+
+1. [Best Practices and Documentation Patterns](docs/patterns.md)
+1. [Helper Scripts and Snippets](docs/helpers.md)
