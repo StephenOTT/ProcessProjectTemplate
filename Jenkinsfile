@@ -44,7 +44,7 @@ pipeline {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
                 error("Argument Keyt \"${e.key}\" contains one or more spaces. Arguments Keys cannot contain spaces.")
-              } else if (e.value.toString().contains(' ') {
+              } else if (e.value.toString().contains(' ')) {
                  error("Argument Value \"${e.value}\" contains one or more spaces. Argument Values cannot contain spaces.")
               }
               echo "Deployment Parameter: ${e.key}=${e.value}"
