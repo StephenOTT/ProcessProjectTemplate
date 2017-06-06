@@ -37,13 +37,13 @@ pipeline {
         script {
           def fields = []
           echo "-------------------------------------------------------"
-          echo "Building Curl Base parameters:"
+          echo "Building Curl Base Parameters:"
           def deployConfig = readJSON file: 'deploy.json'
 
           for ( e in deployConfig ) {
             if (e.key != "files") {
               echo "Deployment Parameter: ${e.key}=${e.value}"
-              fields << "${e.key}=${e.value}"
+              fields << "--form-string ${e.key}=${e.value.encodeURL()}"
             }
           }
 
@@ -53,18 +53,18 @@ pipeline {
           def files = deployConfig['deployment']['files']
           echo files.toString()
           files.each {
-            k, v -> fields << "${k}=@${v}"
+            k, v -> fields << "-F ${k}=@${v}"
           }
           
           echo "-------------------------------------------------------"
           echo "Building Concatinated Parameters"
-          def output = fields.join(" -F ")
+          def output = fields.join(" ")
           env.CAMUNDA_PARAMETERS = output
         }
         script {
           echo "-------------------------------------------------------"
           echo "Building Full CURL String:"
-          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json -F ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
+          def curlOutput = "curl --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json --form-string ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final CURL String:"
           echo curlOutput
           echo "-------------------------------------------------------"
