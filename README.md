@@ -30,7 +30,7 @@ This file does something and its purpose is to do abc.
 
 ![myCasePattern CMMN File](docs/images/CMMN_image_example.png)
 
-## myScripts.js
+## myScript.js
 
 This file does something and its purpose is to do abc.
 
@@ -38,7 +38,7 @@ This file does something and its purpose is to do abc.
 
 This file does something and its purpose is to do abc.
 
-Image example of the Rendered Freemarker file (if applicable)
+Image example of the Rendered FreeMarker file (if applicable)
 
 # How to Deploy
 
