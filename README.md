@@ -44,7 +44,7 @@ Image example of the Rendered Freemarker file (if applicable)
 
 Explanation of how to deploy this specific project goes here.
 
-*For further deployment options and templates see:* ![Deployment Documentation](docs/deployment.md)
+*For further deployment options and templates see:* [Deployment Documentation](docs/deployment.md)
 
 # Change Log
 
