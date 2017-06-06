@@ -42,14 +42,9 @@ Image example of the Rendered Freemarker file (if applicable)
 
 # How to Deploy
 
-## Manual Deployment
-1. [Postman Collection](docs/ProcessProjectRenameMe.postman_collection)
-1. [Postman Environment Variables](docs/CamundaServer.postman_environment)
+Explnation of how to deploy this specific project goes here.
 
-## Automated Deployment
-
-1. [Repo Releases](https://github.com/StephenOTT/ProcessProjectTemplate/releases)
-1. [deploy.json](deploy.json)
+For further deployment options and templates see: [Deployment Documentation]](docs/deployment.md)
 
 # Change Log
 
