@@ -23,10 +23,10 @@
 
 *Explain what is the purpose of each process and process related file in the project.*
 
-## pay_taxes.bpmn
+Click to see file details:
 
 <details>
-  <summary>Click to expand</summary>
+  <summary>pay_taxes.bpmn</summary>
   <br>
 
   This file does something and its purpose is to do abc.
@@ -35,12 +35,8 @@
 
 </details>
 
-
-
-## myDecision.dmn
-
 <details>
-  <summary>Click to expand</summary>
+  <summary>myDecision.dmn</summary>
   <br>
 
   This file does something and its purpose is to do abc.
@@ -59,20 +55,16 @@
 
 </details>
 
-## myScript.js
-
 <details>
-  <summary>Click to expand</summary>
+  <summary>myScript.js</summary>
   <br>
 
   This file does something and its purpose is to do abc.
 
 </details>
 
-## myEmailTemplate.ftl
-
 <details>
-  <summary>Click to expand</summary>
+  <summary>myEmailTemplate.ftl</summary>
   <br>
 
   This file does something and its purpose is to do abc.
