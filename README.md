@@ -25,35 +25,61 @@
 
 ## pay_taxes.bpmn
 
-This file does something and its purpose is to do abc.
+<details>
+  <summary>Click to expand</summary>
+  <br>
 
-![pay_taxes BPMN File](docs/images/BPMN_image_example.png)
+  This file does something and its purpose is to do abc.
+
+  ![pay_taxes BPMN File](docs/images/BPMN_image_example.png)
+
+</details>
+
+
 
 ## myDecision.dmn
 
-This file does something and its purpose is to do abc.
+<details>
+  <summary>Click to expand</summary>
+  <br>
 
-1. DRD
-1. DMN
+  This file does something and its purpose is to do abc.
 
-![myDecision DRD File](docs/images/DRD_image_example.png)
-![myDecision DMN File](docs/images/DMN_image_example.png)
+  1. DRD
+  1. DMN
 
-## myCasePattern.cmmn
+  ![myDecision DRD File](docs/images/DRD_image_example.png)
+  ![myDecision DMN File](docs/images/DMN_image_example.png)
 
-This file does something and its purpose is to do abc.
+  ## myCasePattern.cmmn
 
-![myCasePattern CMMN File](docs/images/CMMN_image_example.png)
+  This file does something and its purpose is to do abc.
+
+  ![myCasePattern CMMN File](docs/images/CMMN_image_example.png)
+
+</details>
 
 ## myScript.js
 
-This file does something and its purpose is to do abc.
+<details>
+  <summary>Click to expand</summary>
+  <br>
+
+  This file does something and its purpose is to do abc.
+
+</details>
 
 ## myEmailTemplate.ftl
 
-This file does something and its purpose is to do abc.
+<details>
+  <summary>Click to expand</summary>
+  <br>
 
-Image example of the **Rendered** FreeMarker file (if applicable)
+  This file does something and its purpose is to do abc.
+
+  Image example of the **Rendered** FreeMarker file (if applicable)
+
+</details>
 
 # How to Deploy
 
@@ -64,8 +90,6 @@ Explanation of how to deploy this specific project goes here.
 | Method              | Tigger                 |
 | ------------------- |:---------------------- |
 | Jenkins | GitHub Release |
-
-
 
 # Change Log
 
