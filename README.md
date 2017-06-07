@@ -7,14 +7,14 @@
 ## Tested Against:
 
 | Version              | Build                  | Date (yyyy-mm-dd)        |
-| -------------------- |:---------------------- | ------------------------ |
+| -------------------- | ---------------------- | ------------------------ |
 | Camunda 7.7 | Tomcat | 2017-06-07 |
 
 
 ## Project Responsibility:
 
 | Person               | Contact Info           | Responsibility           |
-| -------------------- |:---------------------- | ------------------------ |
+| -------------------- | ---------------------- | ------------------------ |
 | John Dishman | john@example.com <br> 555-555-5555 | Project Manager |
 | Jane Horseshoe| hjane@example.com | Developer |
 | Bob Umbrella | bob.BA@example.com | Business Analyst |
