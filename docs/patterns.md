@@ -2,7 +2,7 @@
 
 The following is a list of patterns that should be followed:
 
-1. Files should **not** contain spaces or any non-URL friendly character.
+1. Files names and paths should **not** contain spaces or any non-URL friendly character.
 1. BPMN, DMN, and CMMN process files should be separated into their respective root folders.
 1. The contents of the BPMN, DMN, and CMMN folders can be structured however the developer thinks fits the structure of the project.
 1. Reusable scripts should be stored in the `resources/scripts` folder.
