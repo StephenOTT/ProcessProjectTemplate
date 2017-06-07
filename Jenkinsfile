@@ -7,6 +7,9 @@
 //        1. method org.apache.commons.collections.KeyValue getKey
 //        2. method org.apache.commons.collections.KeyValue getValue
 //-------------------------------------------------------------------------
+// cURL was used to make the HTTP POST multipart/form-data request to Camunda.
+// cUrl was used because the jenkins http-request plugin does not support multipart/form-data POST, and binary data POST.
+//-------------------------------------------------------------------------
 pipeline {
   agent any
   parameters {
