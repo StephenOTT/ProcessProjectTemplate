@@ -31,7 +31,7 @@ pipeline {
           def files = deployConfig['deployment']['files']
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
-          for ( e in files ) {
+          for (e in files) {
             if (fileExists("${e.value}")) {
               echo "${e.key}:${e.value} FOUND"
             } else {
@@ -49,7 +49,7 @@ pipeline {
           echo "Building cURL base parameters:"
           def deployConfig = readJSON file: 'deploy.json'
 
-          for ( e in deployConfig['deployment'] ) {
+          for (e in deployConfig['deployment']) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
                 error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
@@ -68,7 +68,7 @@ pipeline {
           def files = deployConfig['deployment']['files']
           echo files.toString()
 
-          for ( e in files ) {
+          for (e in files) {
             if (e.key.toString().contains(' ')) {
               error("Argument key: \"${e.key}\" contains one or more spaces. File names (argument keys) cannot contain spaces.")
             } else if (e.value.toString().contains(' ')) {
