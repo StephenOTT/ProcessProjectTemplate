@@ -87,7 +87,7 @@ Explanation of how to deploy this specific project goes here.
 
 *For further deployment templates and options see:* [Deployment Documentation](docs/deployment.md)
 
-| Method              | Tigger                 |
+| Method              | Trigger                 |
 | ------------------- |:---------------------- |
 | Jenkins | GitHub Release |
 
