@@ -113,7 +113,7 @@ Examples:
 
 ## Additional Support documentation
 
-See the following for additional support documentation related to building and managing process projects:
+*See the following for additional support documentation related to building and managing process projects:*
 
 1. [Best Practices and Documentation Patterns](docs/patterns.md)
 1. [Helper Scripts and Snippets](docs/helpers.md)
