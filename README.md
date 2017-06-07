@@ -32,7 +32,7 @@ Click to see file details:
   This file does something and its purpose is to do abc.
 
   ![pay_taxes BPMN File](docs/images/BPMN_image_example.png)
-
+  <hr>
 </details>
 
 <details>
@@ -47,12 +47,18 @@ Click to see file details:
   ![myDecision DRD File](docs/images/DRD_image_example.png)
   ![myDecision DMN File](docs/images/DMN_image_example.png)
 
-  ## myCasePattern.cmmn
+  <hr>
+</details>
+
+<details>
+  <summary>myCasePattern.cmmn</summary>
+  <br>
 
   This file does something and its purpose is to do abc.
 
   ![myCasePattern CMMN File](docs/images/CMMN_image_example.png)
 
+  <hr>
 </details>
 
 <details>
@@ -61,6 +67,7 @@ Click to see file details:
 
   This file does something and its purpose is to do abc.
 
+  <hr>
 </details>
 
 <details>
@@ -71,6 +78,7 @@ Click to see file details:
 
   Image example of the **Rendered** FreeMarker file (if applicable)
 
+  <hr>
 </details>
 
 # How to Deploy
