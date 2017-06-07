@@ -4,6 +4,21 @@
 
 *This is the overview explanation of the process project. Explain the purpose of the project.*
 
+## Tested Against:
+
+| Version              | Build                  | Date (yyyy-mm-dd)        |
+| -------------------- |:---------------------- | ------------------------ |
+| Camunda 7.7 | Tomcat | 2017-06-07 |
+
+
+## Project Responsibility:
+
+| Person               | Contact Info           | Responsibility           |
+| -------------------- |:---------------------- | ------------------------ |
+| John Dishman | john@example.com <br> 555-555-5555 | Project Manager |
+| Jane Horseshoe| hjane@example.com | Developer |
+| Bob Umbrella | bob.BA@example.com | Business Analyst |
+
 # Files
 
 *Explain what is the purpose of each process and process related file in the project.*
@@ -38,13 +53,19 @@ This file does something and its purpose is to do abc.
 
 This file does something and its purpose is to do abc.
 
-Image example of the Rendered FreeMarker file (if applicable)
+Image example of the **Rendered** FreeMarker file (if applicable)
 
 # How to Deploy
 
 Explanation of how to deploy this specific project goes here.
 
-*For further deployment options and templates see:* [Deployment Documentation](docs/deployment.md)
+*For further deployment templates and options see:* [Deployment Documentation](docs/deployment.md)
+
+| Method              | Tigger                 |
+| ------------------- |:---------------------- |
+| Jenkins | GitHub Release |
+
+
 
 # Change Log
 
