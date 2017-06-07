@@ -6,8 +6,8 @@
 
 ## Tested Against:
 
-| Version              | Build                  | Date (yyyy-mm-dd)        |
-| -------------------- | ---------------------- | ------------------------ |
+| Version | Build | Date <br>(yyyy-mm-dd) |
+| :---: | :---: | :---: |
 | Camunda 7.7 | Tomcat | 2017-06-07 |
 
 
