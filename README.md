@@ -107,7 +107,6 @@ Examples:
 1. Error handling.
 1. If there is re-usable code that could be used for other purposes.
 1. Explanation of any specific configurations, in-line code or expressions in any of the process files.
-1. Project Contact information/Persons Responsible.
 1. Explanation of designs and specific configurations.
 1. Related documentation that may be contained in another system or the `/docs` folder.
 
