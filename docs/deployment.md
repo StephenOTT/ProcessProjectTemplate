@@ -1,6 +1,6 @@
 # Deployment
 
-There are several ways to deploy Camunda process files.  This project template follows a specific pattern that supported automated deployment with any deployment system that can preform HTTP requests to the Camunda REST API.
+There are several ways to deploy Camunda process files.  This project template follows a specific pattern that supports automated deployments with any deployment system that can preform HTTP requests to the Camunda REST API.
 
 ## Manual Deployment
 
