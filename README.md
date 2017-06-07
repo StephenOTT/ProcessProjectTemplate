@@ -89,7 +89,7 @@ Explanation of how to deploy this specific project goes here.
 
 | Method              | Trigger                 |
 | ------------------- |:----------------------- |
-| Jenkins | On creation of a Release. <br> Deployed to production server |
+| Jenkins | On creation of a Production Release. <br> Deployed to production server |
 | Jenkins | On commit to branch with pattern `build/development`. <br> Deployed to development server
 
 # Change Log
