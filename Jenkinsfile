@@ -38,7 +38,7 @@ pipeline {
             error("Cannot read deploy.json file\nError:\n${e}")
           }
           try{
-            files = deployConfig['deployment']['files'].toJSONArray()
+            files = deployConfig['deployment']['files']
           } catch (Exception e) {
             error("Cannot read deploy.json property: deployment.files\nError:\n${e}")
           }
