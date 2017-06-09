@@ -30,16 +30,19 @@ pipeline {
           echo "-------------------------------------------------------"
         }
         script {
-          // try {
-            def deployConfig = readJSON file: 'deploy.json'
-          // } catch (Exception e) {
-            // error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?\nError:\n${e}")
-          // }
-          // try {
-            def files = deployConfig['deployment']['files']
-          // } catch (Exception e) {
-            // error("Unable to read JSON property deployment.files \nError:\n${e}")
-          // }
+          def deployConfig = null
+          try {
+            deployConfig = readJSON file: 'deploy.json'
+          } catch (Exception e) {
+            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?\nError:\n${e}")
+          }
+
+          def files = null
+          try {
+            files = deployConfig['deployment']['files']
+          } catch (Exception e) {
+            error("Unable to read JSON property deployment.files \nError:\n${e}")
+          }
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
           for (e in files) {
@@ -59,14 +62,16 @@ pipeline {
           echo "-------------------------------------------------------"
           echo "Building cURL base parameters:"
 
+          def deployConfig = null
           try {
-            def deployConfig = readJSON file: 'deploy.json'
+            deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
             error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?")
           }
 
+          def deploymentObject = null
           try {
-            def deploymentObject = deployConfig['deployment']
+            deploymentObject = deployConfig['deployment']
           } catch (Exception e) {
             error("Unable to read JSON property deployment \nError:\n${e}")
           }
@@ -87,8 +92,10 @@ pipeline {
           echo "Building cURL File Parameters"
 
           echo "Files to be deployed:"
+
+          def files = null
           try {
-            def files = deploymentObject['deployment']['files']
+            files = deploymentObject['deployment']['files']
           } catch (Exception e) {
             error("Unable to read JSON property deployment.files \nError:\n${e}")
           }
