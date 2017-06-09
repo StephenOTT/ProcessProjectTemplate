@@ -46,10 +46,10 @@ pipeline {
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
           for (e in files) {
-            if (fileExists("${e.value}")) {
-              echo "${e.key}:${e.value} FOUND"
+            if (fileExists("${e.value.toSting()}")) {
+              echo "${e.key.toSting()}:${e.value.toSting()} FOUND"
             } else {
-              error("${e.key}:${e.value} CANNOT BE FOUND")
+              error("${e.key.toSting()}:${e.value.toSting()} CANNOT BE FOUND")
             }
           }
         }
