@@ -48,11 +48,8 @@ pipeline {
           echo "${files.size()}"
           // echo "${files.keySet()[0]}"
           // echo "${files.entrySet()[0].getKey}"
-          while (files.hasNext()) {
-              Map.Entry entry = (Map.Entry) entries.next();
-              Integer key = (Integer)entry.getKey();
-              Integer value = (Integer)entry.getValue();
-              echo "Key = ${key}, Value = ${value})";
+          for (Integer key : files.keySet()) {
+              System.out.println("Key = " + key);
           }
 
           // for (int i=0; i < files.size(); i++) {
