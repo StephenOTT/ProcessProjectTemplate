@@ -31,7 +31,7 @@ pipeline {
         }
         script {
           def deployConfig = null
-          def files = null
+          @NonCPS def files = null
           try{
             deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
@@ -45,7 +45,6 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
-          echo files.getClass().toString()
           for (e in files) {
             if (fileExists("${e.value}")) {
               echo "${e.key}:${e.value} FOUND"
