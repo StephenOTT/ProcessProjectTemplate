@@ -34,9 +34,13 @@ pipeline {
           def files = null
           try{
             deployConfig = readJSON file: 'deploy.json'
+          } catch (Exception e) {
+            error("Cannot read deploy.json file\nError:\n${e}")
+          }
+          try{
             files = deployConfig['deployment']['files']
           } catch (Exception e) {
-            error("THIS IS BAD 1")
+            error("Cannot read deploy.json property: deployment.files\nError:\n${e}")
           }
 
           echo "-------------------------------------------------------"
@@ -62,9 +66,13 @@ pipeline {
 
           try {
             deployConfig = readJSON file: 'deploy.json'
+          } catch (Exception e) {
+            error("Cannot read deploy.json file\nError:\n${e}")
+          }
+          try {
             deploymentObject = deployConfig['deployment']
           } catch (Exception e) {
-            error("THIS IS BAD 2")
+            error("Cannot read deploy.json property: deployment\nError:\n${e}")
           }
 
           for (e in deploymentObject) {
@@ -86,9 +94,8 @@ pipeline {
           def files = null
           try {
             files = deployConfig['deployment']['files']
-
           } catch (Exception e){
-            error("THIS IS A ERROR 3")
+            error("Cannot read deploy.json property: deployment.files\nError:\n${e}")
           }
 
           echo files.toString()
