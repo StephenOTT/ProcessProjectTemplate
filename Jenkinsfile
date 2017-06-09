@@ -48,19 +48,10 @@ pipeline {
           echo "${files.size()}"
           // echo "${files.keySet()[0]}"
           // echo "${files.entrySet()[0].getKey}"
-          for (Integer key : files.keySet()) {
-              echo "Key = ${key}"
+          for (Map.Entry<Integer, Integer> file : files.entrySet()) {
+              echo "Key =  ${file.getKey()}, Value = ${file.getValue()}";
           }
-
-          // for (int i=0; i < files.size(); i++) {
-          //   if (fileExists("${files[i]}")) {
-          //     echo "${files[i]}:${files[i]} FOUND"
-          //   } else {
-          //     error("${files[i]}:${files[i]} CANNOT BE FOUND")
-          //   }
-          // }
-
-          // for (e in files) {
+          // for (Integer key, Integer value : files.keySet()) {
           //   if (fileExists("${e.value}")) {
           //     echo "${e.key}:${e.value} FOUND"
           //   } else {
