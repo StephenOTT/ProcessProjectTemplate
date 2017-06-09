@@ -4,7 +4,7 @@ The following a collection of code-snippets and scripts that are commonly used.
 
 All examples are Javascript based.
 
-## Load Config.js into memory and into a Process Variable(optional)
+## Load Config.json into memory and into a Process Variable(optional)
 
 ```javascript
 /**
