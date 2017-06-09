@@ -36,7 +36,7 @@ pipeline {
             deployConfig = readJSON file: 'deploy.json'
             files = deployConfig['deployment']['files']
           } catch (Exception e) {
-            error("THIS IS BAD")
+            error("THIS IS BAD 1")
           }
 
           echo "-------------------------------------------------------"
@@ -57,9 +57,17 @@ pipeline {
           def fields = []
           echo "-------------------------------------------------------"
           echo "Building cURL base parameters:"
-          def deployConfig = readJSON file: 'deploy.json'
+          def deployConfig = null
+          def deploymentObject = null
 
-          for (e in deployConfig['deployment']) {
+          try {
+            deployConfig = readJSON file: 'deploy.json'
+            deploymentObject = deployConfig['deployment']
+          } catch (Exception e) {
+            error("THIS IS BAD 2")
+          }
+
+          for (e in deploymentObject) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
                 error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
