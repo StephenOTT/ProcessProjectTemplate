@@ -30,7 +30,12 @@ pipeline {
           echo "-------------------------------------------------------"
         }
         script {
-          def deployConfig = readJSON file: 'deploy.json'
+          try {
+            def deployConfig = readJSON file: 'deploy.json'
+          } catch (all) {
+            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?")
+          }
+          
           def files = deployConfig['deployment']['files']
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
@@ -50,7 +55,12 @@ pipeline {
           def fields = []
           echo "-------------------------------------------------------"
           echo "Building cURL base parameters:"
-          def deployConfig = readJSON file: 'deploy.json'
+
+          try {
+            def deployConfig = readJSON file: 'deploy.json'
+          } catch (all) {
+            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?")
+          }
 
           for (e in deployConfig['deployment']) {
             if (e.key != "files") {
