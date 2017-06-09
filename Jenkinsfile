@@ -45,9 +45,9 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
-          echo files.getClass()
+          echo files.getClass().toString()
           for (e in files) {
-            if (fileExists("${e.value.toString()}")) {
+            if (fileExists("${e.value}")) {
               echo "${e.key}:${e.value} FOUND"
             } else {
               error("${e.key}:${e.value} CANNOT BE FOUND")
