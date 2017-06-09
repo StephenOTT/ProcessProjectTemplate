@@ -33,10 +33,13 @@ pipeline {
           try {
             def deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
-            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?")
+            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?\nError:\n${e}")
           }
-
-          def files = deployConfig['deployment']['files']
+          try {
+            def files = deployConfig['deployment']['files']
+          } catch (Exception e) {
+            error("Unable to read JSON property deployment.files \nError:\n${e}")
+          }
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
           for (e in files) {
@@ -62,7 +65,13 @@ pipeline {
             error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?")
           }
 
-          for (e in deployConfig['deployment']) {
+          try {
+            def deploymentObject = deployConfig['deployment']
+          } catch (Exception e) {
+            error("Unable to read JSON property deployment \nError:\n${e}")
+          }
+
+          for (e in deploymentObject) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
                 error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
