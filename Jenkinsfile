@@ -30,8 +30,9 @@ pipeline {
           echo "-------------------------------------------------------"
         }
         script {
+          // @NonCPS
           def deployConfig = null
-          @NonCPS def files = null
+          def files = null
           try{
             deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
