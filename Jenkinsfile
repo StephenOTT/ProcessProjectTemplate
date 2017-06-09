@@ -30,21 +30,9 @@ pipeline {
           echo "-------------------------------------------------------"
         }
         script {
-          def deployConfig = null
-          try {
-            deployConfig = readJSON file: 'deploy.json'
-          } catch (Exception e) {
-            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?\nError:\n${e}")
-          }
-
-          def files = null
-          try {
-            files = deployConfig['deployment']['files']
-          } catch (Exception e) {
-            error("Unable to read JSON property deployment.files \nError:\n${e}")
-          }
+          def deployConfig = readJSON file: 'deploy.json'
+          def files = deployConfig['deployment']['files']
           echo "-------------------------------------------------------"
-          echo "${files}"
           echo "Looking if each file listed in deploy.json exists:"
           for (e in files) {
             if (fileExists("${e.value}")) {
@@ -62,22 +50,9 @@ pipeline {
           def fields = []
           echo "-------------------------------------------------------"
           echo "Building cURL base parameters:"
+          def deployConfig = readJSON file: 'deploy.json'
 
-          def deployConfig = null
-          try {
-            deployConfig = readJSON file: 'deploy.json'
-          } catch (Exception e) {
-            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?")
-          }
-
-          def deploymentObject = null
-          try {
-            deploymentObject = deployConfig['deployment']
-          } catch (Exception e) {
-            error("Unable to read JSON property deployment \nError:\n${e}")
-          }
-
-          for (e in deploymentObject) {
+          for (e in deployConfig['deployment']) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
                 error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
@@ -93,13 +68,7 @@ pipeline {
           echo "Building cURL File Parameters"
 
           echo "Files to be deployed:"
-
-          def files = null
-          try {
-            files = deploymentObject['deployment']['files']
-          } catch (Exception e) {
-            error("Unable to read JSON property deployment.files \nError:\n${e}")
-          }
+          def files = deployConfig['deployment']['files']
           echo files.toString()
 
           for (e in files) {
@@ -135,7 +104,6 @@ pipeline {
         sh '''
           echo "-------------------------------------------------------\nDEPLOYING to Camunda:\n-------------------------------------------------------"
           response=$(${CAMUNDA_CURL})
-
           if [ $response != 200 ]
           then
             echo "-------------------------------------------------------\nERROR: Did not receive Status Code 200 from Camunda\n-------------------------------------------------------"
