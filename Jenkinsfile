@@ -87,7 +87,11 @@ pipeline {
           echo "Building cURL File Parameters"
 
           echo "Files to be deployed:"
-          def files = deployConfig['deployment']['files']
+          try {
+            def files = deploymentObject['deployment']['files']
+          } catch (Exception e) {
+            error("Unable to read JSON property deployment.files \nError:\n${e}")
+          }
           echo files.toString()
 
           for (e in files) {
