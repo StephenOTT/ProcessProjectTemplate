@@ -49,7 +49,7 @@ pipeline {
           // echo "${files.keySet()[0]}"
           // echo "${files.entrySet()[0].getKey}"
           for (Integer key : files.keySet()) {
-              System.out.println("Key = " + key);
+              echo "Key = ${key}"
           }
 
           // for (int i=0; i < files.size(); i++) {
