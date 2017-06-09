@@ -46,7 +46,7 @@ pipeline {
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
           echo "${files.size()}"
-          echo "${files[0]}"
+          echo "${files.keySet()}"
           // for (int i=0; i < files.size(); i++) {
           //   if (fileExists("${files[i]}")) {
           //     echo "${files[i]}:${files[i]} FOUND"
