@@ -47,7 +47,7 @@ pipeline {
           echo "Looking if each file listed in deploy.json exists:"
           echo "${files.size()}"
           // echo "${files.keySet()[0]}"
-          echo "${files.entrySet()[0].getKey}"
+          // echo "${files.entrySet()[0].getKey}"
           while (files.hasNext()) {
               Map.Entry entry = (Map.Entry) entries.next();
               Integer key = (Integer)entry.getKey();
