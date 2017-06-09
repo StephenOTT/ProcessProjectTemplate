@@ -45,13 +45,14 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
-          for (int i=0; i < files.size(); i++) {
-            if (fileExists("${files[i]}")) {
-              echo "${files[i]}:${files[i]} FOUND"
-            } else {
-              error("${files[i]}:${files[i]} CANNOT BE FOUND")
-            }
-          }
+          echo "${files}"
+          // for (int i=0; i < files.size(); i++) {
+          //   if (fileExists("${files[i]}")) {
+          //     echo "${files[i]}:${files[i]} FOUND"
+          //   } else {
+          //     error("${files[i]}:${files[i]} CANNOT BE FOUND")
+          //   }
+          // }
 
           // for (e in files) {
           //   if (fileExists("${e.value}")) {
