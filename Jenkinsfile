@@ -35,11 +35,11 @@ pipeline {
           } catch (Exception e) {
             error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?\nError:\n${e}")
           }
-          try {
+          // try {
             def files = deployConfig['deployment']['files']
-          } catch (Exception e) {
-            error("Unable to read JSON property deployment.files \nError:\n${e}")
-          }
+          // } catch (Exception e) {
+            // error("Unable to read JSON property deployment.files \nError:\n${e}")
+          // }
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
           for (e in files) {
