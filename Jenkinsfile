@@ -30,8 +30,15 @@ pipeline {
           echo "-------------------------------------------------------"
         }
         script {
-          def deployConfig = readJSON file: 'deploy.json'
-          def files = deployConfig['deployment']['files']
+          def deployConfig = null
+          def files = null
+          try{
+            deployConfig = readJSON file: 'deploy.json'
+            files = deployConfig['deployment']['files']
+          } catch (Exception e) {
+            error("THIS IS BAD")
+          }
+
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
           for (e in files) {
