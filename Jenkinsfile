@@ -44,6 +44,7 @@ pipeline {
             error("Unable to read JSON property deployment.files \nError:\n${e}")
           }
           echo "-------------------------------------------------------"
+          echo "${files}"
           echo "Looking if each file listed in deploy.json exists:"
           for (e in files) {
             if (fileExists("${e.value}")) {
