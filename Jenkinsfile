@@ -30,11 +30,11 @@ pipeline {
           echo "-------------------------------------------------------"
         }
         script {
-          try {
+          // try {
             def deployConfig = readJSON file: 'deploy.json'
-          } catch (Exception e) {
-            error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?\nError:\n${e}")
-          }
+          // } catch (Exception e) {
+            // error("Unable to read deploy.json. Is Pipeline Utility Steps Plugin Installed? Is the JSON structure correct?\nError:\n${e}")
+          // }
           // try {
             def files = deployConfig['deployment']['files']
           // } catch (Exception e) {
