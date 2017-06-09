@@ -83,7 +83,14 @@ pipeline {
           echo "Building cURL File Parameters"
 
           echo "Files to be deployed:"
-          def files = deployConfig['deployment']['files']
+          def files = null
+          try {
+            files = deployConfig['deployment']['files']
+
+          } catch (Exception e){
+            error("THIS IS A ERROR 3")
+          }
+
           echo files.toString()
 
           for (e in files) {
