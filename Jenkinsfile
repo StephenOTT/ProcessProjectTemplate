@@ -46,13 +46,13 @@ pipeline {
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
 
-          for (Map.Entry<Integer, Integer> file : files.entrySet()) {
-            if (fileExists("${file.getValue()}")) {
-              echo "${file.getKey()}:${file.getValue()} FOUND"
-            } else {
-              error("${file.getKey()}:${file.getValue()} CANNOT BE FOUND")
-            }
-          }
+          // for (Map.Entry<Integer, Integer> file : files.entrySet()) {
+          //   if (fileExists("${file.getValue()}")) {
+          //     echo "${file.getKey()}:${file.getValue()} FOUND"
+          //   } else {
+          //     error("${file.getKey()}:${file.getValue()} CANNOT BE FOUND")
+          //   }
+          // }
         }
       }
     }
