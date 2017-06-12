@@ -49,6 +49,7 @@ pipeline {
           for (Map.Entry<Integer, Integer> file : files.entrySet()) {
             echo "Key =  ${file.getKey()}, Value = ${file.getValue()}";
             def myValue = "${file.getValue()}"
+            echo myValue
             echo fileExists(myValue)
           }
 
