@@ -51,7 +51,7 @@ pipeline {
           }
 
           for (Map.Entry<Integer, Integer> file : files.entrySet()) {
-            if (fileExists "${file.getValue()}") {
+            if (fileExists(file.getValue())) {
               echo "${file.getKey()}:${file.getValue()} FOUND"
             } else {
               error("${file.getKey()}:${file.getValue()} CANNOT BE FOUND")
