@@ -10,6 +10,8 @@
 // cURL was used to make the HTTP POST multipart/form-data request to Camunda.
 // cUrl was used because the jenkins http-request plugin does not support multipart/form-data POST, and binary data POST.
 //-------------------------------------------------------------------------
+// NOTE: Jenkins Minimum Version Requirement: 2.46.3
+//-------------------------------------------------------------------------
 pipeline {
   agent any
   parameters {
