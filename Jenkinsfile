@@ -45,6 +45,7 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
+
           for (Map.Entry<Integer, Integer> file : files.entrySet()) {
             if (fileExists("${file.getValue()}")) {
               echo "${file.getKey()}:${file.getValue()} FOUND"
@@ -85,6 +86,7 @@ pipeline {
               echo "Deployment parameter: ${param.getKey()}=${param.getValue}"
               fields << "--form-string ${param.getKey()}=${param.getValue}"
             }
+          }
 
           echo "-------------------------------------------------------"
           echo "Building cURL File Parameters"
