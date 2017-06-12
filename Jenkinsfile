@@ -49,7 +49,7 @@ pipeline {
           for (Map.Entry<Integer, Integer> file : files.entrySet()) {
             echo "Key =  ${file.getKey()}, Value = ${file.getValue()}";
             def exists1 = fileExists 'resources/config.json'
-            echo exists1
+            echo "${exists1}"
           }
 
           for (Map.Entry<Integer, Integer> file : files.entrySet()) {
