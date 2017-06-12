@@ -45,17 +45,11 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
-
-          for (Map.Entry<Integer, Integer> file : files.entrySet()) {
-            echo "Key =  ${file.getKey()}, Value = ${file.getValue()}";
-            echo fileExists('resources/config.json').toString()
-          }
-
-          for (Map.Entry<Integer, Integer> file : files.entrySet()) {
-            if (fileExists(file.getValue())) {
-              echo "${file.getKey()}:${file.getValue()} FOUND"
+          for (e in files) {
+            if (fileExists("${e.value}")) {
+              echo "${e.key}:${e.value} FOUND"
             } else {
-              error("${file.getKey()}:${file.getValue()} CANNOT BE FOUND")
+              error("${e.key}:${e.value} CANNOT BE FOUND")
             }
           }
         }
@@ -81,15 +75,15 @@ pipeline {
             error("Cannot read deploy.json property: deployment\nError:\n${e}")
           }
 
-          for (Map.Entry<Integer, Integer> param : deploymentObject.entrySet()) {
-            if (param.getKey() != "files") {
-              if (param.getKey().toString().contains(' ')) {
-                error("Argument key: \"${param.getKey()}\" contains one or more spaces. Arguments keys cannot contain spaces.")
-              } else if (param.getValue().toString().contains(' ')) {
-                 error("Argument value \"${param.getValue}\" contains one or more spaces. Argument values cannot contain spaces.")
+          for (e in deploymentObject) {
+            if (e.key != "files") {
+              if (e.key.toString().contains(' ')) {
+                error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
+              } else if (e.value.toString().contains(' ')) {
+                 error("Argument value \"${e.value}\" contains one or more spaces. Argument values cannot contain spaces.")
               }
-              echo "Deployment parameter: ${param.getKey()}=${param.getValue}"
-              fields << "--form-string ${param.getKey()}=${param.getValue}"
+              echo "Deployment parameter: ${e.key}=${e.value}"
+              fields << "--form-string ${e.key}=${e.value}"
             }
           }
 
@@ -106,13 +100,13 @@ pipeline {
 
           echo files.toString()
 
-          for (Map.Entry<Integer, Integer> file : files.entrySet()) {
-            if (file.getKey().toString().contains(' ')) {
-              error("Argument key: \"${file.getKey()}\" contains one or more spaces. File names (argument keys) cannot contain spaces.")
-            } else if (file.getValue().toString().contains(' ')) {
-              error("Argument value: \"${file.getValue()}\" contains one or more spaces. File paths (argument values) cannot contain spaces.")
+          for (e in files) {
+            if (e.key.toString().contains(' ')) {
+              error("Argument key: \"${e.key}\" contains one or more spaces. File names (argument keys) cannot contain spaces.")
+            } else if (e.value.toString().contains(' ')) {
+              error("Argument value: \"${e.value}\" contains one or more spaces. File paths (argument values) cannot contain spaces.")
             } else {
-              fields << "-F ${file.getKey()}=@${file.getValue()}"
+              fields << "-F ${e.key}=@${e.value}"
             }
           }
 
