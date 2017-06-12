@@ -48,7 +48,7 @@ pipeline {
 
           for (Map.Entry<Integer, Integer> file : files.entrySet()) {
             echo "Key =  ${file.getKey()}, Value = ${file.getValue()}";
-            echo fileExists 'resources/config.json'
+            echo fileExists('resources/config.json').toString()
           }
 
           for (Map.Entry<Integer, Integer> file : files.entrySet()) {
