@@ -16,8 +16,8 @@ pipeline {
   agent any
   parameters {
     string(name: 'CAMUNDA_URL', defaultValue: 'http://172.17.0.1:8081', description: 'URL of Camunda Instance.')
-    string(name: 'CAMUNDA_USERNAME', description: 'Camunda Basic Auth Username')
-    password(name: 'CAMUNDA_PASSWORD', description: 'Camunda Basic Auth Password')
+    string(name: 'CAMUNDA_USERNAME', defaultValue: "", description: 'Camunda Basic Auth Username: Must not be empty if you use Basic Auth')
+    password(name: 'CAMUNDA_PASSWORD', defaultValue: "", description: 'Camunda Basic Auth Password: Must not be empty if you use Basic Auth')
   }
   stages {
     stage('Validate Deployment Files:') {
