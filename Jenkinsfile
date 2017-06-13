@@ -16,6 +16,9 @@ pipeline {
   agent any
   parameters {
     string(name: 'CAMUNDA_URL', defaultValue: 'http://172.17.0.1:8081', description: 'URL of Camunda Instance.')
+    booleanParam(name: 'USE_BASIC_AUTH', defaultValue: false, description: 'Check this box if you want to use Camunda Basic Auth.')
+    string(name: 'CAMUNDA_USERNAME', defaultValue: 'default_username', description: 'Camunda Basic Auth Username: Must not be empty if you use Basic Auth.')
+    password(name: 'CAMUNDA_PASSWORD', defaultValue: 'default_password', description: 'Camunda Basic Auth Password: Must not be empty if you use Basic Auth.  WARNING: Passwords are exposed in the console output of this build script!!')
   }
   stages {
     stage('Validate Deployment Files:') {
@@ -66,17 +69,40 @@ pipeline {
           def deployConfig = null
           def deploymentObject = null
 
+          echo "Checking for deploy.json:"
           try {
             deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
             error("Cannot read deploy.json file\nError:\n${e}")
           }
+          echo "-------------------------------------------------------"
+          echo "Checking for deploy.json's deployment object:"
           try {
             deploymentObject = deployConfig['deployment']
           } catch (Exception e) {
             error("Cannot read deploy.json property: deployment\nError:\n${e}")
           }
 
+          echo "-------------------------------------------------------"
+          echo "Check if Basic Auth values are provided."
+          if (params['USE_BASIC_AUTH'] == true){
+            if (params['CAMUNDA_USERNAME'] != "default_username"){
+              if (params['CAMUNDA_PASSWORD'].toString() != "default_password"){
+                echo "Basic Auth enabled and values have been provided. Building -u argument."
+                def basicAuth = "-u ${params.CAMUNDA_USERNAME}:${params.CAMUNDA_PASSWORD}"
+                fields << basicAuth
+              } else {
+                error("Basic Auth Password is not set.")
+              }
+            } else {
+              error("Basic Auth Username is not set.")
+            }
+          } else {
+            echo "Basic Auth is not enabled."
+          }
+
+          echo "-------------------------------------------------------"
+          echo "Checking deployment object structure and building --form-string arguments:"
           for (e in deploymentObject) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
@@ -90,7 +116,7 @@ pipeline {
           }
 
           echo "-------------------------------------------------------"
-          echo "Building cURL File Parameters"
+          echo "Building -F arguments:"
 
           echo "Files to be deployed:"
           def files = null
@@ -120,7 +146,7 @@ pipeline {
         script {
           echo "-------------------------------------------------------"
           echo "Building full cURL string:"
-          def curlOutput = "curl -X POST --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
+          def curlOutput = "curl -X POST --url ${params.CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final cURL string:"
           echo curlOutput
           echo "-------------------------------------------------------"
