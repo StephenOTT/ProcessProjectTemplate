@@ -93,11 +93,10 @@ pipeline {
           }
 
           echo "-------------------------------------------------------"
-          echo params['CAMUNDA_PASSWORD']
           echo "Check if Basic Auth values are provided."
           if (params['USE_BASIC_AUTH'] == true){
             if (params['CAMUNDA_USERNAME'] != "default_username"){
-              if (params['CAMUNDA_PASSWORD'] != "default_password"){
+              if (params['CAMUNDA_PASSWORD'].toString() != "default_password"){
                 echo "Basic Auth enabled and values have been provided."
                 def basicAuth = "-u ${params.CAMUNDA_USERNAME}:${params.CAMUNDA_PASSWORD}"
                 fields << basicAuth
