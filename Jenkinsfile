@@ -94,6 +94,7 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Check if Basic Auth values are provided."
+          echo USE_BASIC_AUTH
           if (USE_BASIC_AUTH == false | CAMUNDA_USERNAME != "default_username" | CAMUNDA_PASSWORD != "default_password") {
             echo "Basic Auth enabled and values have been provided."
             def basicAuth = "-u ${CAMUNDA_USERNAME}:${CAMUNDA_PASSWORD}"
