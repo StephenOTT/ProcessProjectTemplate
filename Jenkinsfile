@@ -83,18 +83,6 @@ pipeline {
             error("Cannot read deploy.json property: deployment\nError:\n${e}")
           }
 
-          for (e in deploymentObject) {
-            if (e.key != "files") {
-              if (e.key.toString().contains(' ')) {
-                error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
-              } else if (e.value.toString().contains(' ')) {
-                 error("Argument value \"${e.value}\" contains one or more spaces. Argument values cannot contain spaces.")
-              }
-              echo "Deployment parameter: ${e.key}=${e.value}"
-              fields << "--form-string ${e.key}=${e.value}"
-            }
-          }
-
           echo "-------------------------------------------------------"
           echo "Check if Basic Auth values are provided."
           if (params['USE_BASIC_AUTH'] == true){
