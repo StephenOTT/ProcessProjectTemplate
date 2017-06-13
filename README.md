@@ -131,3 +131,4 @@ A list of terms used by this project.
 | Citizen | | |
 | Permit | | |
 | Purchase Order | PO | The first official offer issued by a buyer to a seller, indicating types, quantities, and agreed prices for products or services. |
+| Legacy System Archer D27 | LSAD27 | An example of a legacy system and a acronym. |
