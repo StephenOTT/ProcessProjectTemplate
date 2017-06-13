@@ -117,3 +117,17 @@ Examples:
 
 1. [Best Practices and Documentation Patterns](docs/patterns.md)
 1. [Helper Scripts and Snippets](docs/helpers.md)
+
+# Terminology
+
+A list of terms used by this project.
+
+| Term           | Acronym | Definition         |
+| -------------- | ------- | ------------------ |
+| Requestor | | |
+| Initiator| | Another term used for requestor. |
+| Business Unit | | |
+| Manager | | |
+| Citizen | | |
+| Permit | | |
+| Purchase Order | PO | The first official offer issued by a buyer to a seller, indicating types, quantities, and agreed prices for products or services. |
