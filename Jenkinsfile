@@ -93,7 +93,7 @@ pipeline {
           }
 
           echo "-------------------------------------------------------"
-          echo "${params['CAMUNDA_PASSWORD']}"
+          echo params['CAMUNDA_PASSWORD']
           echo "Check if Basic Auth values are provided."
           if (params['USE_BASIC_AUTH'] == true){
             if (params['CAMUNDA_USERNAME'] != "default_username"){
