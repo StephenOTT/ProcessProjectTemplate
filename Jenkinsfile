@@ -16,8 +16,9 @@ pipeline {
   agent any
   parameters {
     string(name: 'CAMUNDA_URL', defaultValue: 'http://172.17.0.1:8081', description: 'URL of Camunda Instance.')
-    string(name: 'CAMUNDA_USERNAME', defaultValue: "default_username", description: 'Camunda Basic Auth Username: Must not be empty if you use Basic Auth')
-    password(name: 'CAMUNDA_PASSWORD', defaultValue: "default_password", description: 'Camunda Basic Auth Password: Must not be empty if you use Basic Auth')
+    booleanParam(name: 'USE_BASIC_AUTH', defaultValue: false, description: 'Check this box if you want to use Camunda Basic Auth'))
+    string(name: 'CAMUNDA_USERNAME', defaultValue: 'default_username', description: 'Camunda Basic Auth Username: Must not be empty if you use Basic Auth')
+    password(name: 'CAMUNDA_PASSWORD', defaultValue: 'default_password', description: 'Camunda Basic Auth Password: Must not be empty if you use Basic Auth')
   }
   stages {
     stage('Validate Deployment Files:') {
@@ -93,12 +94,12 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Check if Basic Auth values are provided."
-          if (CAMUNDA_USERNAME != "default_username" && CAMUNDA_PASSWORD != "default_password") {
-            echo "Basic Auth values have been provided."
+          if (USE_BASIC_AUTH == false | CAMUNDA_USERNAME != "default_username" | CAMUNDA_PASSWORD != "default_password") {
+            echo "Basic Auth enabled and values have been provided."
             def basicAuth = "-u ${CAMUNDA_USERNAME}:${CAMUNDA_PASSWORD}"
             fields << basicAuth
           } else {
-            echo "Basic Auth values have not been provided."
+            echo "Basic Auth is not enabled or values have not been provided."
           }
 
           echo "-------------------------------------------------------"
