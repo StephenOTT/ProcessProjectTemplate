@@ -94,7 +94,7 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Check if Basic Auth values are provided."
-          if (params.USE_BASIC_AUTH == false){
+          if (params.USE_BASIC_AUTH == true){
             if(params.CAMUNDA_USERNAME != "default_username"){
               if (params.CAMUNDA_PASSWORD != "default_password"){
                 echo "Basic Auth enabled and values have been provided."
