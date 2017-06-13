@@ -94,13 +94,11 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Check if Basic Auth values are provided."
-          echo "${params.USE_BASIC_AUTH}"
-          echo "${USE_BASIC_AUTH}"
-          if (USE_BASIC_AUTH == false){
-            if(CAMUNDA_USERNAME != "default_username"){
-              if (CAMUNDA_PASSWORD != "default_password"){
+          if (params.USE_BASIC_AUTH == false){
+            if(params.CAMUNDA_USERNAME != "default_username"){
+              if (params.CAMUNDA_PASSWORD != "default_password"){
                 echo "Basic Auth enabled and values have been provided."
-                def basicAuth = "-u ${CAMUNDA_USERNAME}:${CAMUNDA_PASSWORD}"
+                def basicAuth = "-u ${params.CAMUNDA_USERNAME}:${params.CAMUNDA_PASSWORD}"
                 fields << basicAuth
               } else {
                 echo "Basic Auth Password is not set"
@@ -143,7 +141,7 @@ pipeline {
         script {
           echo "-------------------------------------------------------"
           echo "Building full cURL string:"
-          def curlOutput = "curl -X POST --url ${CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
+          def curlOutput = "curl -X POST --url ${params.CAMUNDA_URL}/engine-rest/deployment/create -H Accept:application/json ${CAMUNDA_PARAMETERS} -w \"%{http_code}\""
           echo "Final cURL string:"
           echo curlOutput
           echo "-------------------------------------------------------"
