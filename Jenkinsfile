@@ -16,6 +16,8 @@ pipeline {
   agent any
   parameters {
     string(name: 'CAMUNDA_URL', defaultValue: 'http://172.17.0.1:8081', description: 'URL of Camunda Instance.')
+    string(name: 'CAMUNDA_USERNAME', description: 'Camunda Basic Auth Username')
+    password(name: 'CAMUNDA_PASSWORD', description: 'Camunda Basic Auth Password')
   }
   stages {
     stage('Validate Deployment Files:') {
@@ -87,6 +89,16 @@ pipeline {
               echo "Deployment parameter: ${e.key}=${e.value}"
               fields << "--form-string ${e.key}=${e.value}"
             }
+          }
+
+          echo "-------------------------------------------------------"
+          echo "Check if Basic Auth values are provided."
+          if (CAMUNDA_USERNAME != null and CAMUNDA_PASSWORD != null) {
+            echo "Basic Auth values have been provided."
+            def basicAuth = "-u ${CAMUNDA_USERNAME}:${CAMUNDA_PASSWORD}"
+            fields << basicAuth
+          } else {
+            echo "Basic Auth values have not been provided."
           }
 
           echo "-------------------------------------------------------"
