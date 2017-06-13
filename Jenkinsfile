@@ -93,7 +93,7 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Check if Basic Auth values are provided."
-          if (CAMUNDA_USERNAME != null && CAMUNDA_PASSWORD != null) {
+          if (CAMUNDA_USERNAME != "" && CAMUNDA_PASSWORD != "") {
             echo "Basic Auth values have been provided."
             def basicAuth = "-u ${CAMUNDA_USERNAME}:${CAMUNDA_PASSWORD}"
             fields << basicAuth
