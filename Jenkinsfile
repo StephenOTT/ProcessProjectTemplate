@@ -69,11 +69,14 @@ pipeline {
           def deployConfig = null
           def deploymentObject = null
 
+          echo "Checking for deploy.json:"
           try {
             deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
             error("Cannot read deploy.json file\nError:\n${e}")
           }
+          echo "-------------------------------------------------------"
+          echo "Checking for deploy.json's deployment object:"
           try {
             deploymentObject = deployConfig['deployment']
           } catch (Exception e) {
@@ -97,7 +100,7 @@ pipeline {
           if (params['USE_BASIC_AUTH'] == true){
             if (params['CAMUNDA_USERNAME'] != "default_username"){
               if (params['CAMUNDA_PASSWORD'].toString() != "default_password"){
-                echo "Basic Auth enabled and values have been provided."
+                echo "Basic Auth enabled and values have been provided. Building -u argument."
                 def basicAuth = "-u ${params.CAMUNDA_USERNAME}:${params.CAMUNDA_PASSWORD}"
                 fields << basicAuth
               } else {
@@ -107,11 +110,25 @@ pipeline {
               error("Basic Auth Username is not set")
             }
           } else {
-            echo "Basic Auth is not enabled"
+            echo "Basic Auth is not enabled."
           }
 
           echo "-------------------------------------------------------"
-          echo "Building cURL File Parameters"
+          echo "Checking deployment object structure and building --form-string arguments:"
+          for (e in deploymentObject) {
+            if (e.key != "files") {
+              if (e.key.toString().contains(' ')) {
+                error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
+              } else if (e.value.toString().contains(' ')) {
+                 error("Argument value \"${e.value}\" contains one or more spaces. Argument values cannot contain spaces.")
+              }
+              echo "Deployment parameter: ${e.key}=${e.value}"
+              fields << "--form-string ${e.key}=${e.value}"
+            }
+          }
+
+          echo "-------------------------------------------------------"
+          echo "Building -F arguments:"
 
           echo "Files to be deployed:"
           def files = null
