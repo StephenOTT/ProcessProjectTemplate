@@ -101,10 +101,10 @@ pipeline {
                 def basicAuth = "-u ${params.CAMUNDA_USERNAME}:${params.CAMUNDA_PASSWORD}"
                 fields << basicAuth
               } else {
-                echo "Basic Auth Password is not set"
+                error("Basic Auth Password is not set")
               }
             } else {
-              echo "Basic Auth Username is not set"
+              error("Basic Auth Username is not set")
             }
           } else {
             echo "Basic Auth is not enabled"
