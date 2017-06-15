@@ -162,7 +162,7 @@ pipeline {
         sh '''
           echo "-------------------------------------------------------\nDEPLOYING to Camunda:\n-------------------------------------------------------"
           response=$(${CAMUNDA_CURL})
-          if [ $response != 200 ]
+          if [ $response != 200 && $response != "200" ]
           then
             echo "-------------------------------------------------------\nERROR: Did not receive Status Code 200 from Camunda\n-------------------------------------------------------"
             exit 1
