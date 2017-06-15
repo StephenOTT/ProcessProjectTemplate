@@ -175,6 +175,7 @@ pipeline {
   }
 }
 
+// Used because of Jenkins bug that does allow Loops to iterate over maps.
 @NonCPS
 def mapToList(depmap) {
   def dlist = []
