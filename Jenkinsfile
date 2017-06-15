@@ -58,14 +58,6 @@ pipeline {
               error("${e.key}:${e.value} CANNOT BE FOUND")
             }
           }
-
-          // for (e in files) {
-          //   if (fileExists("${e.value}")) {
-          //     echo "${e.key}:${e.value} FOUND"
-          //   } else {
-          //     error("${e.key}:${e.value} CANNOT BE FOUND")
-          //   }
-          // }
         }
       }
     }
@@ -112,7 +104,7 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Checking deployment object structure and building --form-string arguments:"
-          for (e in deploymentObject) {
+          for (e in mapToList(deploymentObject)) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
                 error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
@@ -137,7 +129,7 @@ pipeline {
 
           echo files.toString()
 
-          for (e in files) {
+          for (e in mapToList(files)) {
             if (e.key.toString().contains(' ')) {
               error("Argument key: \"${e.key}\" contains one or more spaces. File names (argument keys) cannot contain spaces.")
             } else if (e.value.toString().contains(' ')) {
@@ -185,9 +177,9 @@ pipeline {
 
 @NonCPS
 def mapToList(depmap) {
-    def dlist = []
-    for (def entry2 in depmap) {
-        dlist.add(new java.util.AbstractMap.SimpleImmutableEntry(entry2.key, entry2.value))
-    }
-    dlist
+  def dlist = []
+  for (def entry2 in depmap) {
+    dlist.add(new java.util.AbstractMap.SimpleImmutableEntry(entry2.key, entry2.value))
+  }
+  dlist
 }
