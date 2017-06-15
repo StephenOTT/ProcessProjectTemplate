@@ -70,14 +70,14 @@ pipeline {
           def deployConfig = null
           def deploymentObject = null
 
-          echo "Checking for deploy.json:"
+          echo "Reading for deploy.json"
           try {
             deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
             error("Cannot read deploy.json file\nError:\n${e}")
           }
           echo "-------------------------------------------------------"
-          echo "Checking for deploy.json's deployment object:"
+          echo "Reading deploy.json's deployment object:"
           try {
             deploymentObject = deployConfig['deployment']
           } catch (Exception e) {
