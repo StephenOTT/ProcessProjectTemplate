@@ -50,13 +50,22 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
-          for (e in files) {
+
+          for (def e in mapToList(files)) {
             if (fileExists("${e.value}")) {
               echo "${e.key}:${e.value} FOUND"
             } else {
               error("${e.key}:${e.value} CANNOT BE FOUND")
             }
           }
+
+          // for (e in files) {
+          //   if (fileExists("${e.value}")) {
+          //     echo "${e.key}:${e.value} FOUND"
+          //   } else {
+          //     error("${e.key}:${e.value} CANNOT BE FOUND")
+          //   }
+          // }
         }
       }
     }
@@ -172,4 +181,13 @@ pipeline {
       }
     }
   }
+}
+
+@NonCPS
+def mapToList(depmap) {
+    def dlist = []
+    for (def entry2 in depmap) {
+        dlist.add(new java.util.AbstractMap.SimpleImmutableEntry(entry2.key, entry2.value))
+    }
+    dlist
 }
