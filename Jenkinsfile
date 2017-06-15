@@ -50,7 +50,8 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Looking if each file listed in deploy.json exists:"
-          for (e in files) {
+
+          for (def e in mapToList(files)) {
             if (fileExists("${e.value}")) {
               echo "${e.key}:${e.value} FOUND"
             } else {
@@ -69,14 +70,14 @@ pipeline {
           def deployConfig = null
           def deploymentObject = null
 
-          echo "Checking for deploy.json:"
+          echo "Reading for deploy.json"
           try {
             deployConfig = readJSON file: 'deploy.json'
           } catch (Exception e) {
             error("Cannot read deploy.json file\nError:\n${e}")
           }
           echo "-------------------------------------------------------"
-          echo "Checking for deploy.json's deployment object:"
+          echo "Reading deploy.json's deployment object:"
           try {
             deploymentObject = deployConfig['deployment']
           } catch (Exception e) {
@@ -103,7 +104,7 @@ pipeline {
 
           echo "-------------------------------------------------------"
           echo "Checking deployment object structure and building --form-string arguments:"
-          for (e in deploymentObject) {
+          for (e in mapToList(deploymentObject)) {
             if (e.key != "files") {
               if (e.key.toString().contains(' ')) {
                 error("Argument key: \"${e.key}\" contains one or more spaces. Arguments keys cannot contain spaces.")
@@ -128,7 +129,7 @@ pipeline {
 
           echo files.toString()
 
-          for (e in files) {
+          for (e in mapToList(files)) {
             if (e.key.toString().contains(' ')) {
               error("Argument key: \"${e.key}\" contains one or more spaces. File names (argument keys) cannot contain spaces.")
             } else if (e.value.toString().contains(' ')) {
@@ -172,4 +173,14 @@ pipeline {
       }
     }
   }
+}
+
+// Used because of Jenkins bug that does allow Loops to iterate over maps.
+@NonCPS
+def mapToList(depmap) {
+  def dlist = []
+  for (def entry2 in depmap) {
+    dlist.add(new java.util.AbstractMap.SimpleImmutableEntry(entry2.key, entry2.value))
+  }
+  dlist
 }
